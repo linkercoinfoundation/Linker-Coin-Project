@@ -56,7 +56,7 @@ contract FixedSupplyToken is ERC20Interface {
     string public constant symbol = "LNC";
     string public constant name = "Linker Coin";
     uint8 public constant decimals = 18;
-    uint256 _totalSupply = 50000000000000000000000000;
+    uint256 _totalSupply = 500000000000000000000000000;
     
     //AML & KYC
     mapping (address => bool) public frozenAccount;
