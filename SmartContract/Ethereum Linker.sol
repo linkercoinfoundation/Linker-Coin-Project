@@ -169,7 +169,7 @@ contract MyToken is FixedSupplyToken, SafeMath {// is SafeMath, FixedSupplyToken
     uint256 public lpBidPrice = 1; //LP buy price
     uint256 public lpAskVolume = 0; //LP sell volume
     uint256 public lpBidVolume = 0; //LP buy volume
-    uint256 public lpMaxVolume = 10000000000000000000000; //the deafult maximum volume of the liquididty provider is 10000 LNC
+    uint256 public lpMaxVolume = 100000000000000000000000; //the deafult maximum volume of the liquididty provider is 10000 LNC
     
     //LP Para
     uint public edgePerPosition = 1; // (lpTargetPosition - lpPosition) / edgePerPosition = the penalty of missmatched position
@@ -181,7 +181,7 @@ contract MyToken is FixedSupplyToken, SafeMath {// is SafeMath, FixedSupplyToken
     
     function MyToken() public {
         balances[msg.sender] = _totalSupply;
-        lpTargetPosition = 20000000000000000000000000;
+        lpTargetPosition = 200000000000000000000000000;
     }
     
     event Burn(address indexed from, uint256 value);
