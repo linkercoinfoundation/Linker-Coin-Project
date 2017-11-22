@@ -311,12 +311,12 @@ contract MyToken is FixedSupplyToken {
     
     function getAmountOfLinkerBuy(uint256 etherAmountOfSell) public constant returns (uint256)
     {
-        return ((( multiplierOfPrice.mul(etherAmountOfSell) ).div(getLpAskPrice())).mul(uint256(10000).sub(lpFeeBp))).sub(uint256(10000));
+        return ((( multiplierOfPrice.mul(etherAmountOfSell) ).div(getLpAskPrice())).mul(uint256(10000).sub(lpFeeBp))).div(uint256(10000));
     }
     
     function getAmountOfEtherSell(uint256 linkerAmountOfBuy) public constant returns (uint256)
     {
-        return (((getLpBidPrice().mul(linkerAmountOfBuy)).div(multiplierOfPrice)).mul(uint256(10000).sub(lpFeeBp))).sub(uint256(10000));
+        return (((getLpBidPrice().mul(linkerAmountOfBuy)).div(multiplierOfPrice)).mul(uint256(10000).sub(lpFeeBp))).div(uint256(10000));
     }
     
     function () public payable {
