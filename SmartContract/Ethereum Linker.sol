@@ -1,27 +1,29 @@
 pragma solidity ^0.4.16;
 
-contract SafeMath {
-    
-    function safeMul(uint a, uint b) internal returns (uint) {
-        uint c = a * b;
-        assert(a == 0 || c / a == b);
-        return c;
-    }
-    
-    function safeSub(uint a, uint b) internal returns (uint) {
-        assert(b <= a);
-        return a - b;
-    }
-    
-    function safeAdd(uint a, uint b) internal returns (uint) {
-        uint c = a + b;
-        assert(c>=a && c>=b);
-        return c;
-    }
-   
-    function assert(bool assertion) internal {
-        if (!assertion) throw;
-    }
+library SafeMath {
+  function mul(uint256 a, uint256 b) internal constant returns (uint256) {
+    uint256 c = a * b;
+    assert(a == 0 || c / a == b);
+    return c;
+  }
+
+  function div(uint256 a, uint256 b) internal constant returns (uint256) {
+    // assert(b > 0); // Solidity automatically throws when dividing by 0
+    uint256 c = a / b;
+    // assert(a == b * c + a % b); // There is no case in which this doesn't hold
+    return c;
+  }
+
+  function sub(uint256 a, uint256 b) internal constant returns (uint256) {
+    assert(b <= a);
+    return a - b;
+  }
+
+  function add(uint256 a, uint256 b) internal constant returns (uint256) {
+    uint256 c = a + b;
+    assert(c >= a);
+    return c;
+  }
 }
 
 contract ERC20Interface {
@@ -53,6 +55,9 @@ contract ERC20Interface {
 }
    
 contract FixedSupplyToken is ERC20Interface {
+    
+    using SafeMath for uint;
+    
     string public constant symbol = "LNC";
     string public constant name = "Linker Coin";
     uint8 public constant decimals = 18;
@@ -104,8 +109,8 @@ contract FixedSupplyToken is ERC20Interface {
             && balances[msg.sender] >= _amount 
             && _amount > 0
             && balances[_to] + _amount > balances[_to]) {
-            balances[msg.sender] -= _amount;
-            balances[_to] += _amount;
+            balances[msg.sender].sub(_amount);
+            balances[_to].add(_amount);
             Transfer(msg.sender, _to, _amount);
             return true;
         } else {
@@ -130,9 +135,9 @@ contract FixedSupplyToken is ERC20Interface {
             && allowed[_from][msg.sender] >= _amount
             && _amount > 0
             && balances[_to] + _amount > balances[_to]) {
-            balances[_from] -= _amount;
-            allowed[_from][msg.sender] -= _amount;
-            balances[_to] += _amount;
+            balances[_from].sub(_amount);
+            allowed[_from][msg.sender].sub(_amount);
+            balances[_to].add(_amount);
             Transfer(_from, _to, _amount);
             return true;
         } else {
@@ -158,21 +163,21 @@ contract FixedSupplyToken is ERC20Interface {
     }
 }
  
-contract MyToken is FixedSupplyToken, SafeMath {// is SafeMath, FixedSupplyToken{
-
+contract MyToken is FixedSupplyToken {
+    
     //LP Setup lp:liquidity provider
     
     uint8 public constant decimalOfPrice = 10;  // LNC/ETH
-    int256 public constant multiplierOfPrice = 10000000000;
-    int256 public constant multiplier = 1000000000000000000;
+    uint256 public constant multiplierOfPrice = 10000000000;
+    uint256 public constant multiplier = 1000000000000000000;
     uint256 public lpAskPrice = 100000000000; //LP sell price
     uint256 public lpBidPrice = 1; //LP buy price
     uint256 public lpAskVolume = 0; //LP sell volume
     uint256 public lpBidVolume = 0; //LP buy volume
-    uint256 public lpMaxVolume = 100000000000000000000000; //the deafult maximum volume of the liquididty provider is 10000 LNC
+    uint256 public lpMaxVolume = 1000000000000000000000000; //the deafult maximum volume of the liquididty provider is 10000 LNC
     
     //LP Para
-    uint public edgePerPosition = 1; // (lpTargetPosition - lpPosition) / edgePerPosition = the penalty of missmatched position
+    uint256 public edgePerPosition = 1; // (lpTargetPosition - lpPosition) / edgePerPosition = the penalty of missmatched position
     uint256 public lpTargetPosition;
     uint256 public lpFeeBp = 10; // lpFeeBp is basis point of fee collected by LP
     
@@ -188,9 +193,8 @@ contract MyToken is FixedSupplyToken, SafeMath {// is SafeMath, FixedSupplyToken
     function burn(uint256 _value) onlyOwner public returns (bool success) {
         if (isBurn == true)
         {
-            require(balances[msg.sender] >= _value); // Check if the sender has enough
-            balances[msg.sender] -= _value; // Subtract from the sender
-            _totalSupply -= _value; // Updates totalSupply
+            balances[msg.sender].sub(_value);
+            _totalSupply.sub(_value);
             Burn(msg.sender, _value);
             return true;
         }
@@ -219,7 +223,7 @@ contract MyToken is FixedSupplyToken, SafeMath {// is SafeMath, FixedSupplyToken
     
     event SetLpMaxVolume(uint256 _lpMaxVolume);
     function setLpMaxVolume(uint256 _lpMaxVolume) onlyOwner public {
-        require(_lpMaxVolume < 100000000000000000000000);
+        require(_lpMaxVolume < 1000000000000000000000000);
         lpMaxVolume = _lpMaxVolume;
         if (lpMaxVolume < lpBidVolume){
             lpBidVolume = lpMaxVolume;
@@ -230,9 +234,9 @@ contract MyToken is FixedSupplyToken, SafeMath {// is SafeMath, FixedSupplyToken
         SetLpMaxVolume(_lpMaxVolume);
     }
     
-    event SetEdgePerPosition(uint8 _edgePerPosition);
-    function setEdgePerPosition(uint8 _edgePerPosition) onlyOwner public {
-        require(_edgePerPosition < 100000000000000000000000);
+    event SetEdgePerPosition(uint256 _edgePerPosition);
+    function setEdgePerPosition(uint256 _edgePerPosition) onlyOwner public {
+        //require(_edgePerPosition < 100000000000000000000000000000);
         edgePerPosition = _edgePerPosition;
         SetEdgePerPosition(_edgePerPosition);
     }
@@ -259,56 +263,28 @@ contract MyToken is FixedSupplyToken, SafeMath {// is SafeMath, FixedSupplyToken
     function getLpBidPrice()public constant returns (uint256)
     { 
         uint256 lpPosition = balanceOf(owner);
-        int256 lpPositionToTarget;
-        
-        if (lpTargetPosition > lpPosition)
+            
+        if (lpTargetPosition >= lpPosition)
         {
-            lpPositionToTarget = int256(lpTargetPosition - lpPosition);
+            return lpBidPrice;
         }
         else
         {
-            lpPositionToTarget = - int256(lpPosition - lpTargetPosition);
+            return lpBidPrice.sub((((lpPosition.sub(lpTargetPosition)).div(multiplier)).mul(edgePerPosition)).div(multiplierOfPrice));
         }
-        
-        if (lpPositionToTarget < 0)
-        {
-            int256 _lpBidPrice = int256(lpBidPrice) + lpPositionToTarget * int256(edgePerPosition) / multiplier / multiplierOfPrice;
-            
-            if (_lpBidPrice > 0)
-            {
-                return uint256(_lpBidPrice);
-            }
-            else
-            {
-                return 1;
-            }
-        }
-        
-        return lpBidPrice;
     }
     
     function getLpAskPrice()public constant returns (uint256)
     {
         uint256 lpPosition = balanceOf(owner);
-        int256 lpPositionToTarget;
-        
-        if (lpTargetPosition > lpPosition)
-        {
-            lpPositionToTarget = int256(lpTargetPosition - lpPosition);
-        }
-        else
-        {
-            lpPositionToTarget = - int256(lpPosition - lpTargetPosition);
-        }
-        
-        if (lpPositionToTarget > 0)
-        {
-            int256 _lpAskPrice = int256(lpAskPrice) + lpPositionToTarget * int256(edgePerPosition) / multiplier / multiplierOfPrice;
-            return uint256(_lpAskPrice);
-        }
-        else
+            
+        if (lpTargetPosition <= lpPosition)
         {
             return lpAskPrice;
+        }
+        else
+        {
+            return lpAskPrice.add((((lpTargetPosition.sub(lpPosition)).div(multiplier)).mul(edgePerPosition)).div(multiplierOfPrice));
         }
     }
     
@@ -333,24 +309,14 @@ contract MyToken is FixedSupplyToken, SafeMath {// is SafeMath, FixedSupplyToken
         return true;
     }
     
-    function getAmountOfLinkerBuy(uint etherAmountOfSell) public constant returns (uint256)
+    function getAmountOfLinkerBuy(uint256 etherAmountOfSell) public constant returns (uint256)
     {
-        int256 _amountOfBuy = multiplierOfPrice * int256(etherAmountOfSell) / int256(getLpBidPrice()) * (10000 - int256(lpFeeBp)) / 10000;
-        
-        if (_amountOfBuy > 0)
-            return uint256(_amountOfBuy);
-        else
-            return 0;
+        return ((( multiplierOfPrice.mul(etherAmountOfSell) ).div(getLpAskPrice())).mul(uint256(10000).sub(lpFeeBp))).sub(uint256(10000));
     }
     
     function getAmountOfEtherSell(uint256 linkerAmountOfBuy) public constant returns (uint256)
     {
-        int256 _amontOfSell = int256(getLpAskPrice()) * int256(linkerAmountOfBuy)  * (10000 - int256(lpFeeBp)) / 10000 / multiplierOfPrice;
-        
-        if (_amontOfSell > 0)
-            return uint256(_amontOfSell);
-        else
-            return 0;
+        return (((getLpBidPrice().mul(linkerAmountOfBuy)).div(multiplierOfPrice)).mul(uint256(10000).sub(lpFeeBp))).sub(uint256(10000));
     }
     
     function () public payable {
@@ -360,8 +326,8 @@ contract MyToken is FixedSupplyToken, SafeMath {// is SafeMath, FixedSupplyToken
         require (getLpIsWorking(500));                      // Check Whether Lp Bid and Ask spread is less than 5%
         uint256 amount = getAmountOfLinkerBuy(msg.value);   // calculates the amount of buy from customer 
         require(balances[this] >= amount);                  // checks if it has enough to sell
-        balances[msg.sender] += amount;                     // adds the amount to buyer's balance
-        balances[this] -= amount;                           // subtracts amount from seller's balance
+        balances[msg.sender].add(amount);                     // adds the amount to buyer's balance
+        balances[this].sub(amount);                           // subtracts amount from seller's balance
         Transfer(this, msg.sender, amount);                 // execute an event reflecting the chang               // ends function and returns
         return amount;                                    
     }
@@ -369,9 +335,9 @@ contract MyToken is FixedSupplyToken, SafeMath {// is SafeMath, FixedSupplyToken
     function sell(uint256 amount)public returns (uint) {    
         require (getLpIsWorking(500));
         require (balances[msg.sender] >= amount);           // checks if the sender has enough to sell
-        balances[this] += amount;                           // adds the amount to owner's balance
-        balances[msg.sender] -= amount;                     // subtracts the amount from seller's balance
-        uint linkerSendAmount = getAmountOfEtherSell(amount);
+        balances[this].add(amount);                           // adds the amount to owner's balance
+        balances[msg.sender].sub(amount);                     // subtracts the amount from seller's balance
+        uint256 linkerSendAmount = getAmountOfEtherSell(amount);
         require(msg.sender.send(linkerSendAmount));         // sends ether to the seller: it's important to do this last to prevent recursion attacks
         Transfer(msg.sender, this, linkerSendAmount);       // executes an event reflecting on the change
         return linkerSendAmount;                                   // ends function and returns
