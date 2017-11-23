@@ -109,8 +109,8 @@ contract FixedSupplyToken is ERC20Interface {
             && balances[msg.sender] >= _amount 
             && _amount > 0
             && balances[_to] + _amount > balances[_to]) {
-            balances[msg.sender].sub(_amount);
-            balances[_to].add(_amount);
+            balances[msg.sender] = balances[msg.sender].sub(_amount);
+            balances[_to] = balances[_to].add(_amount);
             Transfer(msg.sender, _to, _amount);
             return true;
         } else {
@@ -135,9 +135,9 @@ contract FixedSupplyToken is ERC20Interface {
             && allowed[_from][msg.sender] >= _amount
             && _amount > 0
             && balances[_to] + _amount > balances[_to]) {
-            balances[_from].sub(_amount);
-            allowed[_from][msg.sender].sub(_amount);
-            balances[_to].add(_amount);
+            balances[_from] = balances[_from].sub(_amount);
+            allowed[_from][msg.sender] = allowed[_from][msg.sender].sub(_amount);
+            balances[_to] = balances[_to].add(_amount);
             Transfer(_from, _to, _amount);
             return true;
         } else {
@@ -193,8 +193,8 @@ contract MyToken is FixedSupplyToken {
     function burn(uint256 _value) onlyOwner public returns (bool success) {
         if (isBurn == true)
         {
-            balances[msg.sender].sub(_value);
-            _totalSupply.sub(_value);
+            balances[msg.sender] = balances[msg.sender].sub(_value);
+            _totalSupply = _totalSupply.sub(_value);
             Burn(msg.sender, _value);
             return true;
         }
@@ -292,7 +292,7 @@ contract MyToken is FixedSupplyToken {
     {
         if (isLpStart == false)
             return false;
-        
+         
         if (lpAskVolume == 0 || lpBidVolume == 0)
         {
             return false;
@@ -322,21 +322,23 @@ contract MyToken is FixedSupplyToken {
     function () public payable {
     }
     
-    function buy() public payable returns (uint){
+    function buy() public payable returns (uint256){
         require (getLpIsWorking(500));                      // Check Whether Lp Bid and Ask spread is less than 5%
         uint256 amount = getAmountOfLinkerBuy(msg.value);   // calculates the amount of buy from customer 
-        require(balances[this] >= amount);                  // checks if it has enough to sell
-        balances[msg.sender].add(amount);                     // adds the amount to buyer's balance
-        balances[this].sub(amount);                           // subtracts amount from seller's balance
-        Transfer(this, msg.sender, amount);                 // execute an event reflecting the chang               // ends function and returns
+        require(balances[owner] >= amount);                  // checks if it has enough to sell
+        balances[msg.sender] = balances[msg.sender].add(amount);                     // adds the amount to buyer's balance
+        balances[owner] = balances[owner].sub(amount);                           // subtracts amount from seller's balance
+        lpAskVolume = lpAskVolume.sub(amount);
+        Transfer(owner, msg.sender, amount);                 // execute an event reflecting the chang               // ends function and returns
         return amount;                                    
     }
     
-    function sell(uint256 amount)public returns (uint) {    
+    function sell(uint256 amount)public returns (uint256) {    
         require (getLpIsWorking(500));
         require (balances[msg.sender] >= amount);           // checks if the sender has enough to sell
-        balances[this].add(amount);                           // adds the amount to owner's balance
-        balances[msg.sender].sub(amount);                     // subtracts the amount from seller's balance
+        balances[owner] = balances[owner].add(amount);                           // adds the amount to owner's balance
+        balances[msg.sender] = balances[msg.sender].sub(amount);                     // subtracts the amount from seller's balance
+        lpBidVolume = lpBidVolume.sub(amount);
         uint256 linkerSendAmount = getAmountOfEtherSell(amount);
         require(msg.sender.send(linkerSendAmount));         // sends ether to the seller: it's important to do this last to prevent recursion attacks
         Transfer(msg.sender, this, linkerSendAmount);       // executes an event reflecting on the change
