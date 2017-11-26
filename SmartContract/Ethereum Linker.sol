@@ -340,13 +340,17 @@ contract MyToken is FixedSupplyToken {
         balances[msg.sender] = balances[msg.sender].sub(amount);                     // subtracts the amount from seller's balance
         lpBidVolume = lpBidVolume.sub(amount);
         uint256 linkerSendAmount = getAmountOfEtherSell(amount);
-        require(msg.sender.send(linkerSendAmount));         // sends ether to the seller: it's important to do this last to prevent recursion attacks
+        //require(msg.sender.send(linkerSendAmount));  
+		 require(transfer(owner,linkerSendAmount)); 
+		// sends ether to the seller: it's important to do this last to prevent recursion attacks
         Transfer(msg.sender, this, linkerSendAmount);       // executes an event reflecting on the change
         return linkerSendAmount;                                   // ends function and returns
     }
     
     function transferEther(uint256 amount) onlyOwner public{
-        require(msg.sender.send(amount));
+        //require(msg.sender.send(linkerSendAmount)); 
+        uint256 linkerSendAmount = getAmountOfEtherSell(amount);
+		 require(transfer(owner,linkerSendAmount)); 
         Transfer(msg.sender, this, amount);
     }
 }
