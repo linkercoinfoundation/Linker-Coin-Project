@@ -103,19 +103,17 @@ contract FixedSupplyToken is ERC20Interface {
     }
 
     // Transfer the balance from owner's account to another account
-    function transfer(address _to, uint256 _amount) public returns (bool success) {
-        if (_to != 0x0  // Prevent transfer to 0x0 address.
+     function transfer(address _to, uint256 _amount) public returns (bool success) {
+	    require(_to != 0x0  // Prevent transfer to 0x0 address.
             && IsFreezedAccount(msg.sender) == false
             && balances[msg.sender] >= _amount 
             && _amount > 0
-            && balances[_to] + _amount > balances[_to]) {
+            && balances[_to] + _amount > balances[_to]);
+       
             balances[msg.sender] = balances[msg.sender].sub(_amount);
             balances[_to] = balances[_to].add(_amount);
             Transfer(msg.sender, _to, _amount);
             return true;
-        } else {
-            return false;
-        }
     }
 
     // Send _value amount of tokens from address _from to address _to
@@ -129,20 +127,19 @@ contract FixedSupplyToken is ERC20Interface {
       address _to,
       uint256 _amount
     ) public returns (bool success) {
-        if (_to != 0x0  // Prevent transfer to 0x0 address.
+	     require(_to != 0x0  // Prevent transfer to 0x0 address.
             && IsFreezedAccount(_from) == false
             && balances[_from] >= _amount
             && allowed[_from][msg.sender] >= _amount
             && _amount > 0
-            && balances[_to] + _amount > balances[_to]) {
+            && balances[_to] + _amount > balances[_to]);
+	
+        
             balances[_from] = balances[_from].sub(_amount);
             allowed[_from][msg.sender] = allowed[_from][msg.sender].sub(_amount);
             balances[_to] = balances[_to].add(_amount);
             Transfer(_from, _to, _amount);
-            return true;
-        } else {
-            return false;
-        }
+        
     }
 
      // Allow _spender to withdraw from your account, multiple times, up to the _value amount.
@@ -191,16 +188,13 @@ contract MyToken is FixedSupplyToken {
     
     event Burn(address indexed from, uint256 value);
     function burn(uint256 _value) onlyOwner public returns (bool success) {
-        if (isBurn == true)
-        {
+       require(isBurn == true);
+       
             balances[msg.sender] = balances[msg.sender].sub(_value);
             _totalSupply = _totalSupply.sub(_value);
             Burn(msg.sender, _value);
             return true;
-        }
-        else{
-            return false;
-        }
+       
     }
     
     event SetBurnStart(bool _isBurnStart);
@@ -290,21 +284,14 @@ contract MyToken is FixedSupplyToken {
     
     function getLpIsWorking(int minSpeadBp) public constant returns (bool )
     {
-        if (isLpStart == false)
-            return false;
-         
-        if (lpAskVolume == 0 || lpBidVolume == 0)
-        {
-            return false;
-        }
+        require(isLpStart);
+		
+         require(lpAskVolume != 0 && lpBidVolume != 0);
+       
         
         int256 bidPrice = int256(getLpBidPrice());
         int256 askPrice = int256(getLpAskPrice());
-        
-        if (askPrice - bidPrice > minSpeadBp * (bidPrice + askPrice) / 2 / 10000)
-        {
-            return false;
-        }
+        require(askPrice - bidPrice <= minSpeadBp * (bidPrice + askPrice) / 2 / 10000);
         
         return true;
     }
@@ -340,16 +327,15 @@ contract MyToken is FixedSupplyToken {
         balances[msg.sender] = balances[msg.sender].sub(amount);                     // subtracts the amount from seller's balance
         lpBidVolume = lpBidVolume.sub(amount);
         uint256 linkerSendAmount = getAmountOfEtherSell(amount);
-        //require(msg.sender.send(linkerSendAmount));  
-		 require(transfer(owner,linkerSendAmount)); 
-		// sends ether to the seller: it's important to do this last to prevent recursion attacks
+       //require(msg.sender.send(linkerSendAmount));  
+		 require(transfer(owner,linkerSendAmount));         // sends ether to the seller: it's important to do this last to prevent recursion attacks
         Transfer(msg.sender, this, linkerSendAmount);       // executes an event reflecting on the change
         return linkerSendAmount;                                   // ends function and returns
     }
     
     function transferEther(uint256 amount) onlyOwner public{
-        //require(msg.sender.send(linkerSendAmount)); 
-        uint256 linkerSendAmount = getAmountOfEtherSell(amount);
+       //require(msg.sender.send(linkerSendAmount));
+	     uint256 linkerSendAmount = getAmountOfEtherSell(amount);
 		 require(transfer(owner,linkerSendAmount)); 
         Transfer(msg.sender, this, amount);
     }
