@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>15.0</VCProjectVersion>
+    <ProjectGuid>{C84546F3-0FC5-450A-BD08-D727562F4D87}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>SuperProject</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>C:\Users\Dr.Aris\nr_c304\code;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\Dr.Aris\nr_c304\code;$(LibraryPath)</LibraryPath>
+    <SourcePath>C:\Users\Dr.Aris\nr_c304\code;$(SourcePath)</SourcePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="ArithmeticAsian.h" />
+    <ClInclude Include="Barrier.h" />
+    <ClInclude Include="ConstantDividend.h" />
+    <ClInclude Include="ConstantVolatility.h" />
+    <ClInclude Include="cubicfit.h" />
+    <ClInclude Include="cubicfit1.h" />
+    <ClInclude Include="cubicfitratevolstock.h" />
+    <ClInclude Include="cubicfitratevolstockpathdependent.h" />
+    <ClInclude Include="cubicfitratevolstockpathdependentbarrier.h" />
+    <ClInclude Include="Dividend.h" />
+    <ClInclude Include="DoubleKnockInBarrier.h" />
+    <ClInclude Include="DoubleKnockOutBarrier.h" />
+    <ClInclude Include="DownAndInBarrier.h" />
+    <ClInclude Include="DownAndOutBarrier.h" />
+    <ClInclude Include="EarlyExcercise.h" />
+    <ClInclude Include="EarlyExcerciseBarrier.h" />
+    <ClInclude Include="EarlyExcercisePathDependent.h" />
+    <ClInclude Include="EarlyExcerciseRateVol.h" />
+    <ClInclude Include="EarlyExcerciseRateVolBarrier.h" />
+    <ClInclude Include="EarlyExcerciseRateVolPathDependent.h" />
+    <ClInclude Include="EarlyExcerciseRateVolPathDependentBarrier.h" />
+    <ClInclude Include="EuropeanExcercise.h" />
+    <ClInclude Include="EuropeanExcerciseBarrier.h" />
+    <ClInclude Include="EuropeanExcerciseBarrierPathDependent.h" />
+    <ClInclude Include="EuropeanExcercisePathDependent.h" />
+    <ClInclude Include="Excercise.h" />
+    <ClInclude Include="GeometricAsian.h" />
+    <ClInclude Include="GettingGaussianByBoxMueller.h" />
+    <ClInclude Include="HestonVolatility.h" />
+    <ClInclude Include="LognormalDividend.h" />
+    <ClInclude Include="NoBarrier.h" />
+    <ClInclude Include="PathDependency.h" />
+    <ClInclude Include="PathIndependent.h" />
+    <ClInclude Include="Payoff.h" />
+    <ClInclude Include="PayoffCall.h" />
+    <ClInclude Include="PayoffPut.h" />
+    <ClInclude Include="Pseudo_Random_Generator.h" />
+    <ClInclude Include="Quasi_Random_Generator.h" />
+    <ClInclude Include="Rate.h" />
+    <ClInclude Include="RateBDT.h" />
+    <ClInclude Include="RateCIR.h" />
+    <ClInclude Include="RateConstant.h" />
+    <ClInclude Include="RateHoLee.h" />
+    <ClInclude Include="RateHWCIR.h" />
+    <ClInclude Include="RateHWVasicek.h" />
+    <ClInclude Include="RateVasicek.h" />
+    <ClInclude Include="Regression.h" />
+    <ClInclude Include="Simulation.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="Stratified_Random_Generator.h" />
+    <ClInclude Include="targetver.h" />
+    <ClInclude Include="Uniform_Generator.h" />
+    <ClInclude Include="UpAndInBarrier.h" />
+    <ClInclude Include="UpAndOutBarrier.h" />
+    <ClInclude Include="Vanilla.h" />
+    <ClInclude Include="Volatility.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="ArithmeticAsian.cpp" />
+    <ClCompile Include="ConstantDividend.cpp" />
+    <ClCompile Include="ConstantVolatility.cpp" />
+    <ClCompile Include="cubicfit.cpp" />
+    <ClCompile Include="cubicfit1.cpp" />
+    <ClCompile Include="cubicfitratevolstock.cpp" />
+    <ClCompile Include="cubicfitratevolstockpathdependent.cpp" />
+    <ClCompile Include="cubicfitratevolstockpathdependentbarrier.cpp" />
+    <ClCompile Include="DoubleKnockInBarrier.cpp" />
+    <ClCompile Include="DoubleKnockOutBarrier.cpp" />
+    <ClCompile Include="DownAndInBarrier.cpp" />
+    <ClCompile Include="DownAndOutBarrier.cpp" />
+    <ClCompile Include="EarlyExcercise.cpp" />
+    <ClCompile Include="EarlyExcerciseBarrier.cpp" />
+    <ClCompile Include="EarlyExcercisePathDependent.cpp" />
+    <ClCompile Include="EarlyExcerciseRateVol.cpp" />
+    <ClCompile Include="EarlyExcerciseRateVolBarrier.cpp" />
+    <ClCompile Include="EarlyExcerciseRateVolPathDependent.cpp" />
+    <ClCompile Include="EarlyExcerciseRateVolPathDependentBarrier.cpp" />
+    <ClCompile Include="EuropeanExcercise.cpp" />
+    <ClCompile Include="EuropeanExcerciseBarrier.cpp" />
+    <ClCompile Include="EuropeanExcerciseBarrierPathDependent.cpp" />
+    <ClCompile Include="EuropeanExcercisePathDependent.cpp" />
+    <ClCompile Include="GeometricAsian.cpp" />
+    <ClCompile Include="GettingGaussianByBoxMueller.cpp" />
+    <ClCompile Include="HestonVolatility.cpp" />
+    <ClCompile Include="LognormalDividend.cpp" />
+    <ClCompile Include="NoBarrier.cpp" />
+    <ClCompile Include="PathIndependent.cpp" />
+    <ClCompile Include="PayoffCall.cpp" />
+    <ClCompile Include="PayoffPut.cpp" />
+    <ClCompile Include="Pseudo_Random_Generator.cpp" />
+    <ClCompile Include="Quasi_Random_Generator.cpp" />
+    <ClCompile Include="RateBDT.cpp" />
+    <ClCompile Include="RateCIR.cpp" />
+    <ClCompile Include="RateConstant.cpp" />
+    <ClCompile Include="RateHoLee.cpp" />
+    <ClCompile Include="RateHWCIR.cpp" />
+    <ClCompile Include="RateHWVasicek.cpp" />
+    <ClCompile Include="RateVasicek.cpp" />
+    <ClCompile Include="Regression.cpp" />
+    <ClCompile Include="Simulation.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="Stratified_Random_Generator.cpp" />
+    <ClCompile Include="SuperProject.cpp" />
+    <ClCompile Include="UpAndInBarrier.cpp" />
+    <ClCompile Include="UpAndOutBarrier.cpp" />
+    <ClCompile Include="Vanilla.cpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
