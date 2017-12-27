@@ -1,3 +1,4 @@
+//Created by Aris Skliros
 #include "Vanilla.h"
 #include "Rate.h"
 #include "Volatility.h"
