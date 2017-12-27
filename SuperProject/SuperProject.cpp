@@ -1,5 +1,5 @@
 // SuperProject.cpp : Defines the entry point for the console application.
-//
+//Created exclusively by Dr. Aris Skliros
 
 #include "stdafx.h"
 #include <iostream>
