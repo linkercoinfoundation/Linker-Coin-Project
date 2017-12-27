@@ -1,3 +1,4 @@
+//Written by Dr. Aris Skliros exclusively
 #include "stdafx.h"
 #include "Simulation.h"
 #include "GettingGaussianByBoxMueller.h"
