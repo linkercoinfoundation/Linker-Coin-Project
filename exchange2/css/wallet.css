@@ -1,0 +1,622 @@
+
+.txt_hide {
+	height: 0;
+	overflow: hidden;
+}
+
+#transactionDetails tbody tr {
+	display: none;
+}
+#transactionDetails tbody .tr_bb {
+	display: table-row;
+}
+
+
+.wallet_wrap {
+	width: 100%;
+	min-height: 530px;
+	overflow: hidden;
+	margin: 60px 0;
+}
+.wallet_wrap .page_link {
+	width: 100%;
+	overflow: hidden;
+	margin: 0 0 80px;
+}
+.wallet_wrap .page_link ul li {
+	width: 50%;
+	float: left;
+	text-align: center;
+	font-weight: 900;
+	font-size: 18px;
+	font-family: 'NanumSquare';
+	padding: 3px 0;
+}
+.wallet_wrap .page_link ul li a {
+	display: block;
+}
+.wallet_wrap .page_link ul li.active a {
+	color: #003366;
+}
+.wallet_wrap .page_link ul li.active {
+	border-bottom: 3px solid #003366;
+}
+#wallet .wallet_info {
+	width: 100%;
+	overflow: hidden;
+	margin: 0 0 80px;
+}
+#wallet .wallet_info h3 {
+	padding: 10px 40px;
+	display: table;
+	border: 1px solid #ccc;
+	margin: 0 auto;
+	font-size: 26px;
+	font-family: 'NanumSquare';
+	text-align: center;
+	font-weight: bold;
+	line-height: 34px;
+}
+
+
+/* 공지CSS -- bic1004 */
+#wallet .wallet_info2 h5 {
+	padding: 20px 60px;
+	display: table;
+	margin: 0 auto;
+    
+	font-size: 20px;
+    color: red;
+	font-family: 'NanumSquare';
+	text-align: center;
+	font-weight: bold;
+	
+}
+
+
+/* 공사중 버튼지우기 -- bic1004 */
+#wallet .ap-balances .balances_list .balances_btn .deposit1,
+#wallet .ap-balances .balances_list .balances_btn .withbtn1
+/*
+#wallet .ap-balances .balances_list .balances_btn .deposit5,
+#wallet .ap-balances .balances_list .balances_btn .deposit8,
+#wallet .ap-balances .balances_list .balances_btn .deposit9,
+#wallet .ap-balances .balances_list .balances_btn .deposit10,
+#wallet .ap-balances .balances_list .balances_btn .deposit11,
+#wallet .ap-balances .balances_list .balances_btn .withbtn3,
+#wallet .ap-balances .balances_list .balances_btn .withbtn5,
+#wallet .ap-balances .balances_list .balances_btn .withbtn8,
+#wallet .ap-balances .balances_list .balances_btn .withbtn9,
+#wallet .ap-balances .balances_list .balances_btn .withbtn10,
+#wallet .ap-balances .balances_list .balances_btn .withbtn11
+*/
+{display: none;} 
+
+
+#wallet .wallet_info h3 strong {
+	font-size: 34px;
+	color: #ED1C24;
+	font-weight: 900;
+	margin-left: 50px;
+}
+#wallet .wallet_info h3 .krw {
+	font-size: 24px;
+}
+#wallet .wallet_info h3 .idChk {
+	margin-right: 20px;
+	color: #003366;
+}
+#wallet .asset_balance {
+	width: 100%;
+	overflow: hidden;
+}
+#wallet .asset_balance .ap-header-actions {
+	width: 100%;
+	overflow: hidden;
+}
+#wallet .asset_balance .ap-title {
+	display: none;
+}
+#wallet .asset_balance .tab_list {
+	float: right;
+	margin: 0 0 20px;
+}
+#wallet .asset_balance .tab_list span {
+	display: block;
+	background: #999;
+	color: #fff;
+	padding: 5px 10px;
+	float: left;
+	cursor: pointer;
+	margin-left: 10px;
+}
+#wallet .asset_balance .tab_list span:first-child {
+	margin-left: 0;
+}
+#wallet .asset_balance .tab_list span.active {
+	background: #036;
+}
+#wallet .asset_balance .tit_list {
+	width: 100%;
+	overflow: hidden;
+	border-bottom: 2px solid #003366;
+	padding: 5px 0;
+}
+#wallet .asset_balance .tit_list ul li {
+	font-size: 17px;
+	font-weight: bold;
+	font-family: 'NanumSquare';
+	box-sizing: border-box;
+	float: left;
+	box-sizing: border-box;
+}
+#wallet .ap-balances {
+	width: 100%;
+	overflow: hidden;
+}
+#wallet .ap-balances .balances_list {
+	width: 100%;
+	overflow: hidden;
+	border-bottom: 1px solid #bbb;
+	padding: 10px 0;
+}
+
+
+#wallet .ap-balances .balances_12,
+#wallet .ap-balances .balances_13,
+#wallet .ap-balances .balances_14,
+#wallet .ap-balances .balances_15 {
+	display: none;
+}
+
+#wallet .ap-balances .balances_list:nth-child(even) {
+	background: rgba(4,86,150,.1);
+}
+#wallet .ap-balances .balances_list .row > div {
+	float: left;
+	font-size: 17px;
+}
+#wallet .ap-balances .balances_list small {
+	font-size: 17px;
+	font-family: 'NanumSquare';	
+}
+#wallet .ap-balances .balances_list .currency-name {
+	background-repeat: no-repeat;
+	background-position: 5px 50%;
+	padding-left: 30px;
+	font-size: 17px;
+	font-family: 'NanumSquare';
+	font-weight: bold;
+}
+#wallet .ap-balances .balances_list .currency_02 {
+	background-image: url(/images/icon/btc.png);
+}
+#wallet .ap-balances .balances_list .currency_03 {
+	background-image: url(/images/icon/eth.png);
+}
+#wallet .ap-balances .balances_list .currency_04 {
+	background-image: url(/images/icon/bch.png);
+}
+#wallet .ap-balances .balances_list .currency_05 {
+	background-image: url(/images/icon/etc.png);
+}
+#wallet .ap-balances .balances_list .currency_06 {
+	background-image: url(/images/icon/xrp.png);
+}
+#wallet .ap-balances .balances_list .currency_07 {
+	background-image: url(/images/icon/ltc.png);
+}
+#wallet .ap-balances .balances_list .currency_08 {
+	background-image: url(/images/icon/lnc.png);
+}
+#wallet .ap-balances .balances_list .currency_09 {
+	background-image: url(/images/icon/trueusd.png);
+}
+#wallet .ap-balances .balances_list .currency_010 {
+	background-image: url(/images/icon/aeron.png);
+}
+#wallet .ap-balances .balances_list .currency_011 {
+	background-image: url(/images/icon/truechain.png);
+}
+
+#wallet .ap-balances .balances_list .balances_name {
+	width: 200px;
+}
+#wallet .ap-balances .balances_list .balances_num {
+	width: 250px;
+}
+#wallet .ap-balances .balances_list .balances_hold {
+	width: 250px;
+}
+#wallet .ap-balances .balances_list .balances_wait {
+	width: 250px;
+}
+#wallet .ap-balances .balances_list .balances_btn {
+	width: 250px;
+}
+#wallet .ap-balances .balances_list .balances_btn .deposit-button {
+	background-color: #045696; 
+	margin-right: 10px;
+	padding: 3px 7px;
+}
+#wallet .ap-balances .balances_list .balances_btn .withdraw-button {
+	background-color: #f7694d;
+	padding: 3px 7px;
+}
+
+
+
+#transactionDetails .tab_container {
+	width: 100%;
+	overflow: hidden;
+}
+#transactionDetails .tab_container .tab_list {
+	width: 100%;
+	overflow: hidden;
+	margin: 0 0 40px;
+}
+#transactionDetails .tab_container .tab_list ul {
+	border-top: 1px solid #ddd;
+}
+#transactionDetails .tab_container .tab_list ul li {
+	width: 33.33%;
+	height: 44px;
+	line-height: 44px;
+	float: left;
+	box-sizing: border-box;
+	text-align: center;
+	border-right: 1px solid #ddd;
+	font-size: 18px;
+	font-family: 'NanumSquare';
+	font-weight: bold;
+	color: #666;
+	border-bottom: 1px solid #ddd;
+	cursor: pointer;
+}
+#transactionDetails .tab_container .tab_list ul li:first-child {
+	border-left: 1px solid #ddd;
+}
+#transactionDetails .tab_container .tab_list ul li.active {
+	color: #003366;
+	border-bottom: none;
+}
+#transactionDetails .tab_container .tab_contant {
+	width: 100%;
+	overflow: hidden;
+}
+#transactionDetails .tab_container .tab_contant .tab_cont {
+	width: 100%;
+	display: none;
+}
+#transactionDetails .tab_container .tab_contant #tab1 {
+	display: block;
+}
+#transactionDetails .tab_container .tab_contant table {
+	width: 100%;
+}
+#transactionDetails .tab_container .tab_contant table thead {
+	border-bottom: 2px solid #003366;
+}
+#transactionDetails .tab_container .tab_contant table thead tr th {
+	font-size: 17px;
+	font-family: 'NanumSquare';
+	padding: 5px 0;
+}
+#transactionDetails .tab_container .tab_contant table tbody tr:nth-child(even) {
+	background: #efefef;
+}
+#transactionDetails .tab_container .tab_contant table tbody tr td {
+	padding: 7px 0;
+	border-bottom: 1px solid #bbb;
+	text-align: center;
+}
+#transactionDetails .tab_container .tab_contant table tbody tr td.stateRejected,
+#transactionDetails .tab_container .tab_contant table tbody tr td.stateCanceled {
+	color: #e2242a;
+}
+#transactionDetails .tab_container .tab_contant table tbody tr td.stateWorking {
+	color: #13901e;
+}
+#transactionDetails .tab_container .tab_contant table tbody tr td.stateFullyExecuted {
+	color: #003366;
+}
+#transactionDetails .tab_container .tab_contant table tbody tr td.buyFont {
+	color: #ee1c25;
+	font-weight: bold;
+}
+#transactionDetails .tab_container .tab_contant table tbody tr td.sellFont {
+	color: #0472bc;
+	font-weight: bold;
+}
+#transactionDetails .tab_container .tab_contant .pull-right {
+	margin: 20px 0 0;
+	float: none;
+	text-align: center;
+}
+#transactionDetails .tab_container .tab_contant .pagi {
+	overflow: hidden;
+	float: none;
+	display: table;
+	margin: 0 auto;
+}
+#transactionDetails .tab_container .tab_contant .pagi li {
+	display: inline-block;
+	margin: 0 7px;
+	cursor: pointer;
+}
+#transactionDetails .tab_container .tab_contant .pagi li a {
+	color: #666;
+	font-size: 18px;
+}
+#transactionDetails .tab_container .tab_contant .pagi li.active a {
+	color: #003366;
+	font-size: 20px;
+}
+
+
+
+
+
+.ap-header {
+	/*position: relative;*/
+}
+/* DEPOSIT WITHDRAW MODAL POPUP */
+.deposit_wrap {
+	width: 100%;
+	overflow: hidden;
+}
+.deposit_wrap h5 {
+	font-size: 18px;
+	font-family: 'NanumSquare';
+	font-weight: bold;
+}
+.deposit_wrap p {
+	font-size: 17px;
+	font-family: 'Roboto', 'NanumSquare', sans-serif;
+}
+.coin_deposit_txt {
+	font-size: 17px;
+	font-family: 'Roboto', 'NanumSquare', sans-serif;
+}
+.ap-modal_inner .txt_wrap p {
+	font-size: 17px;
+	font-family: 'Roboto', 'NanumSquare', sans-serif;
+	word-break: keep-all;
+}
+.deposit_wrap .wran_txt {
+	font-weight: bold;
+	color: #ED1C24;
+	margin: 20px 0 0;
+}
+.deposit_wrap .inf_wrap {
+	width: 100%;
+	overflow: hidden;
+}
+.deposit_wrap .inf_wrap .form-group {
+	width: 100%;
+	overflow: hidden;
+	margin: 0 0 10px;
+}
+.deposit_wrap .inf_wrap .form-group label {
+	display: inline-block;
+	vertical-align: top;
+	width: 80px;
+	font-size: 17px;
+	font-family: 'Roboto', 'NanumSquare', sans-serif;
+	font-weight: bold;
+	float: left;
+	line-height: 30px;
+}
+.deposit_wrap .inf_wrap .form-group > div {
+	float: left;
+	margin-left: 10px;
+}
+.deposit_wrap .inf_wrap .form-group .inf_txt {
+	min-width: 250px;
+	height: 30px;
+	border: 1px solid #ccc;
+	box-sizing: border-box;
+	text-indent: 10px;
+}
+.deposit_wrap .inf_wrap .form-group textarea {
+	width: 100%;
+	padding: 5px;
+	box-sizing: border-box;
+	border: 1px solid #ccc;
+	clear: both;
+}
+.deposit_wrap .clearfix button {
+	float: right;
+}
+.deposit_wrap .clearfix .btn_cancel {
+	margin-left: 10px;
+}
+
+
+.withdraw_wrap {
+	width: 100%;
+	overflow: hidden;
+}
+.withdraw_wrap .inf_wrap {
+	width: 100%;
+	overflow: hidden;
+	margin: 20px 0 0;
+}
+.withdraw_wrap p {
+	font-size: 17px;
+	font-family: 'Roboto', 'NanumSquare', sans-serif;
+	line-height: 27px;
+	color: #333;
+	margin-bottom: 10px;
+}
+.withdraw_wrap .warn_txt {
+	font-weight: bold;
+	color: #ED1C24;
+	margin: 20px 0 0;
+}
+.withdraw_wrap .inf_wrap .form-group {
+	width: 100%;
+	overflow: hidden;
+	margin: 0 0 10px;
+}
+.coin_txt_wrap .info_msg p {
+	font-size: 17px;
+	font-family: 'Roboto', 'NanumSquare', sans-serif;
+}
+
+/*.withdraw_wrap .inf_wrap .form-group:nth-child(4) {
+	border-bottom: 2px solid #003366;
+	padding: 0 0 20px 0;
+}*/
+.withdraw_wrap .inf_wrap .form-group label {
+	width: 130px;
+	font-size: 17px;
+	font-family: 'Robots', 'NanumSquare', sans-serif;
+	font-weight: bold;
+	float: left;
+	line-height: 30px;
+}
+.withdraw_wrap .inf_wrap .form-group > div {
+	float: left;
+	margin-left: 10px;
+}
+.withdraw_wrap .inf_wrap .form-group .inf_txt {
+	min-width: 250px;
+	height: 30px;
+	border: 1px solid #ccc;
+	box-sizing: border-box;
+	text-indent: 10px;
+}
+.withdraw_wrap .inf_wrap .form-group textarea {
+	width: 100%;
+	padding: 5px;
+	box-sizing: border-box;
+	border: 1px solid #ccc;
+	clear: both;
+}
+.withdraw_wrap .clearfix button {
+	float: right;
+}
+
+.coin_withdraw_wrap {
+	width: 100%;
+	overflow: hidden;
+	margin: 0 0 10px;
+}
+.coin_withdraw_wrap h3 {
+	font-size: 17px;
+	font-family: 'Roboto', 'NanumSquare', sans-serif;
+	font-weight: bold;
+	margin: 0 0 5px;
+}
+.coin_withdraw_wrap p {
+	font-size: 15px;
+}
+.coin_inf_wrap {
+	width: 100%;
+	overflow: hidden;
+}
+.coin_inf_wrap .form-group {
+	width: 100%;
+	overflow: hidden;
+	margin: 0 0 10px;
+}
+.coin_inf_wrap .form-group.withraw-comment-input {
+	height: 0;
+	overflow: hidden;
+	margin: 0;
+	padding: 0;
+}
+.coin_inf_wrap .form-group.withdraw_amount {
+	width: auto;
+	float: left;
+}
+.coin_inf_wrap .form-group label {
+	font-size: 17px;
+	font-family: 'Robots', 'NanumSquare', sans-serif;
+	font-weight: bold;
+	float: left;
+	line-height: 30px;
+}
+.coin_inf_wrap .form-group > div {
+	float: left;
+	margin-left: 10px;
+}
+.coin_inf_wrap .form-group > div input {
+	min-width: 250px;
+	height: 30px;
+	border: 1px solid #ccc;
+	box-sizing: border-box;
+	text-indent: 10px;
+}
+.coin_inf_wrap .withraw-comment-input label,
+.coin_inf_wrap .withraw-externaladdress-input label {
+	width: 100%;
+	overflow: hidden;
+	float: none;
+}
+.coin_inf_wrap .withraw-comment-input > div,
+.coin_inf_wrap .withraw-externaladdress-input > div {
+	width: 100%;
+	overflow: hidden;
+	margin: 0;
+}
+.coin_inf_wrap .withraw-comment-input > div input,
+.coin_inf_wrap .withraw-externaladdress-input > div input {
+	width: 100%;
+}
+.coin_inf_wrap p {
+	margin: 5px 0 0;
+	font-size: 17px;
+	font-family: 'Roboto', 'NanumSquare', sans-serif;
+}
+.coin_inf_wrap .clearfix {
+	width: 100%;
+	overflow: hidden;
+	margin: 20px 0 0;
+}
+.coin_inf_wrap .clearfix button {
+	float: right;
+}
+.coin_inf_wrap .clearfix .btn_cancel {
+	margin-left: 10px;
+}
+
+  
+/**/
+.container-fluid {}
+.container-fluid .wrapper-dropdown-5 span {
+	display: block; 
+	word-break: break-all; 
+	border: 1px solid #ddd; 
+	background: #f5f5f5;
+	padding: 10px;
+	margin: 10px 0 0;
+	cursor: pointer;
+}
+.container-fluid .wrapper-dropdown-5 span i {
+	font-size: 14px;
+	float: right;
+	position: relative;
+	top: 4px;
+}
+.container-fluid #dd {
+	font-size: 15px;
+	font-weight: 700;
+	outline: none;
+	position: relative;
+}
+.container-fluid #dd .dropdown {
+	width: 100%;
+	max-height: 100px;
+	overflow: auto;
+	position: absolute;
+	display: none;
+	background: #fff;
+	border: 1px solid #ccc;
+	box-sizing: border-box;
+	padding: 10px;
+}
+.container-fluid #dd.active .dropdown {
+	display: block;
+}

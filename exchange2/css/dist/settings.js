@@ -1,0 +1,1 @@
+var JarvisSettings = {"published":"true"};

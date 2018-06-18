@@ -1,0 +1,218 @@
+
+
+#header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 0 30px;
+  background: #1b1f27;
+  border-bottom: 1px solid rgba(247, 105, 77, .5);
+  z-index: 100;
+}
+
+#header #logo {
+  display: table;
+  float: left;
+  width: 100px;
+  height: 100%;
+}
+
+#header #logo a {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+#header #logo img {
+  max-width: 100%;
+}
+
+#header #ticker {
+  float: left;
+}
+
+#header #ticker .market_value {
+  color: #fff;
+}
+
+#header .navi_info {
+  float: right;
+  height: 50px;
+}
+
+#header .navi_info #langWrap {
+  float: left;
+  height: 100%;
+}
+
+#header .navi_info #langWrap p {
+  font-size: 1rem;
+  color: #fff;
+  height: 100%;
+  display: table;
+}
+
+#header .navi_info #langWrap p span {
+  display: table-cell;
+  vertical-align: middle;
+  cursor: pointer;
+}
+
+#header .navi_info #langWrap p i {
+  transition: transform .3s;
+}
+
+#header .navi_info #langWrap #langSelect {
+  width: 100px;
+  position: absolute;
+  padding: 10px 3px;
+  background: #fff;
+  border-radius: 5px;
+  background: #1f252d;
+}
+#header .navi_info #langWrap #langSelect.lang_off {
+  display: none;
+}
+#header .navi_info #langWrap #langSelect.lang_on {
+  display: block;
+}
+
+#header .navi_info #langWrap #langSelect:before {
+  content: '';
+  width: 5px;
+  height: 5px;
+  transform: rotate(45deg);
+  position: absolute;
+  top: -3px;
+  left: 50%;
+  background: #1f252d;
+}
+
+#header .navi_info #langWrap #langSelect li {
+  cursor: pointer;
+  display: table;
+  color: #fff;
+  margin: 5px auto;
+  transition: color .2s;
+  font-size: 0.9rem;
+}
+
+
+#header .navi_info #langWrap #langSelect li:hover {
+  color: #f7694d;
+}
+
+#header .navi_info .member_navi {
+  float: right;
+  height: 100%;
+  display: table;
+  margin-left: 50px;
+}
+#header .navi_info .member_navi > div {
+  display: table-cell;
+  vertical-align: middle;
+}
+#header .navi_info .member_navi .dropdown-menu {
+  background: #fff;
+  border-radius: 5px;
+  position: absolute;
+  padding: 5px 10px;
+}
+#header .navi_info .member_navi .dropdown-menu:active {
+  outline: none;
+}
+#header .navi_info .member_navi .dropdown ul {
+  display: none;
+}
+#header .navi_info .member_navi .dropdown.open ul {
+  display: block;
+}
+#header .navi_info .member_navi .dropdown-menu li {
+  font-size: .8rem;
+}
+#header .navi_info .member_navi .dropdown-menu li a {
+  cursor: pointer;
+}
+
+#header .navi_info .member_navi .dropdown-toggle {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1rem;
+  outline: none;
+  cursor: pointer;
+}
+
+#header .navi_info .member_navi .dropdown-toggle i {
+  font-size: 1.2rem;
+  vertical-align: middle;
+  position: relative;
+  bottom: 2px;
+  transform: rotate(0deg);
+  transition: transform .3s;
+}
+
+#header .navi_info .member_navi .dropdown.open .dropdown-toggle i {
+  transform: rotate(-180deg);
+}
+
+#header .navi_info .loggedin_wrap {
+  height: 100%;
+  float: right;
+}
+
+#header .navi_info .loggedin_wrap ul {
+  display: table;
+  float: right;
+  height: 100%;
+}
+
+#header .navi_info .loggedin_wrap ul li {
+  display: table-cell;
+  padding-left: 15px;
+  vertical-align: middle;
+}
+
+#header .navi_info .loggedin_wrap ul li a {
+  color: #ddd;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+#header .navi_info .loggedin_wrap ul li a:hover {
+  color: #fff;
+}
+
+#header .navi_info .loggedin_wrap ul li a i {
+  color: #ed3d2f;
+  font-size: 1.2rem;
+  line-height: 1.5em;
+}
+
+/* DASHBOARD CSS */
+#dashBoard #taskbarContainer {
+  width: 100%;
+  height: 50px;
+  position: fixed;
+  top: 50px;
+  left: 0;
+  background: #000;
+  z-index: 50;
+}
+#dashBoard #taskbarContainer .taskbar {
+  display: table;
+  margin: 0 auto;
+}
+#dashBoard #taskbarContainer .taskbar li {
+  width: 120px;
+  float: left;
+  line-height: 50px;
+  text-align: center;
+}
+#dashBoard #taskbarContainer .taskbar a {
+  color: #fff;
+}

@@ -1,0 +1,102 @@
+#mHeader {display: none;}
+
+@media (max-width: 767px) {
+	html, body {
+		width: 100%;
+	}
+	.container {width: 100%;}
+	#wrap {min-width: auto;}
+	#header {min-width: auto; height: 50px;}
+	#header .container {width: 200px; overflow: hidden; position: fixed; top: 0; right: -200px; background: rgba(0,51,102,.95); padding: 20px 10px; box-sizing: border-box; transition: right .3s;}
+	#header #logo {display: none;}
+	#header .menu {float: none; width: 100%; position: relative; top: auto; transform: translateY(0); margin: 130px 0 0;}
+	#header .menu ul li {width: 100%; overflow: hidden; float: none; font-size: 1.6rem; margin: 0 0 10px; text-align: right; line-height: 2em;}
+	#header .account_navi {width: 100%; overflow: hidden; float: none; position: absolute; top: 90px; transform: translateY(0); margin: 0; padding: 0 10px; box-sizing: border-box; left: 0;}
+	#header .account_navi ul {display: block; margin: 0 auto; overflow: hidden; width: 100%;}
+	#header .account_navi ul li {margin: 0; float: left; width: 48%; text-align: center;}
+	#header .account_navi ul li:first-child {margin-right: 4%;}
+	#header .lang_navi {float: none; position: absolute; top: 50px; right: 10px; transform: translateY(0);}
+	#header .scr_off {height: 50px;}
+
+	/* MOBILE HEADER */
+	#mHeader {width: 100%; overflow: hidden; display: block;}
+	#mHeader #mobileLogo {width: 120px; height: 50px; float: left;}
+	#mHeader #mobileLogo a {width: 100%; position: relative; top: 50%; transform: translateY(-50%); display: block;}
+	#mHeader #mobileLogo a img {width: 100%;}
+	#mHeader #m_menuBtn {position: fixed; top: 7px; right: 5px; background: none; border: none; font-size: 30px; color: #fff; outline: none; z-index: 300;}
+
+	#mainVisual {height: 400px; overflow: hidden;}
+	#mainVisual .login_wrap {width: 100%;}
+	#mainVisual .login_wrap .visual_txt h3 {font-size: 2rem;}
+	#mainVisual .login_wrap .visual_txt p {font-size: 1.1rem; font-family: 'Roboto', 'Noto Sans Korean', sans-serif;}
+	#mainVisual .login_wrap .exchange_btn {width: 80%;}
+	#mainVisual .login_wrap .exchange_btn a {font-size: 1.3rem;}
+	#mainVisual .login_wrap .login_cont {padding: 0 5%; box-sizing: border-box;}
+	#mainVisual .login_wrap .login_cont .input--custom .form-group input {width: 100%;}
+	#mainVisual .login_wrap .login_cont .btn-lg {width: 100%;}
+	#mainVisual .login_wrap .login_cont .sign_wrap {margin: 20px 0 0 15px;}
+
+	#infoSection {height: auto; overflow: hidden; padding: 0 0 10px;}
+	#infoSection .exchange_view h3 {font-size: 1.4rem;}
+	#infoSection .info_btn ul li {font-size: 1.1rem; margin: 0 3px; padding: 0 7px;}
+
+	#exchangeInfo {padding: 40px 0 20px}
+	#exchangeInfo .container > div {width: 100%; float: none; margin: 0 0 30px;}
+	#exchangeInfo .container > div.txt_effect {height: auto;}
+	#exchangeInfo .container > div .thumb {display: none;}
+
+	#features {padding: 40px 0 20px;}
+	#features .grid_wrap {width: auto; overflow: hidden; padding: 0 0 30px;}
+	#features .grid_wrap .grid_item {width: 90%; min-height: auto; float: none; margin: 0 auto 30px;}
+	#features .grid_wrap .grid_item span {font-size: 4rem; margin: 0 0 20px;}
+	#features .grid_wrap .grid_item h4 {font-size: 1.5rem;}
+	#features .grid_wrap .grid_item p {font-size: 1.2rem; font-family: 'Roboto', 'Noto Sans Korean', sans-serif;}
+
+	#footer {min-width: auto;}
+	#footer .navi_bar {display: none;}
+	#footer .foot_content {padding: 20px 5px; box-sizing: border-box;}
+	#footer .foot_content h2 {float: none; margin: 0 auto 15px;}
+	#footer .foot_content .address {margin: 0;}
+	#footer .foot_content .address span {font-size: 1rem; margin-right: 10px;}
+	#footer .foot_content .cs_center {margin: 15px 0 0;}
+	#footer .foot_content .cs_center h3 {display: none;}
+	#footer .foot_content .cs_center .txt_cont {float: none;}
+	#footer .foot_content .cs_center .txt_cont .area {width: 100%; float: none; margin: 0; overflow: hidden; font-size: 1rem;}
+	#footer .foot_content .foot_info {width: 100%; float: none;}
+	#footer .foot_content .copyright p {font-size: 1rem; text-align: center;}
+
+
+	/* MYPAGE */
+	.mypage_list {width: 100%; margin: 30px auto 40px;}
+	.mypage_list ul li a {width: 110px; height: 36px; line-height: 36px; font-size: 1.3rem;}
+	#myPage {width: 100%; padding: 0 10px; box-sizing: border-box; margin: 0 0 20px;}
+	#myPage .container {width: 100%;}
+	#myPage .account_info .default_info {margin: 0 0 30px;}
+	#myPage .account_info table th {width: 80px; font-size: 1.3rem; padding: 8px 10px;}
+	#myPage .account_info table td {font-size: 1.3rem;}
+	#myPage .account_info table td input {min-width: 150px !important;}
+
+	/* SECURITY */
+	#security {width: 100%; padding: 0 10px; box-sizing: border-box;}
+	#security h1 {font-size: 1.8rem; line-height: 1em; padding: 0 0 10px; margin: 0 0 10px;}
+	#security h2 {word-break: keep-all; font-size: 1.4rem; text-align: center; margin: 0 0 30px;}
+	#security .security_chk > div {width: 100%; float: none;}
+	#security .security_chk > div .cont {height: auto; padding: 20px 10px;}
+	#security .security_chk > div .cont h4 {font-size: 1.4rem; height: auto;}
+	#security .security_chk > div .cont h4:before {background-size: 100%;}
+
+
+
+	/* MODAL POPUP */
+	.modal_content {width: 90%; left: 5%; margin: 0; padding: 20px 15px;}
+	.modal_content #registerForm {min-width: auto !important; width: 100%;}
+	.modal_content #registerForm .keyPermissions {display: inline;}
+	#loginForm .clearfix, #registerForm .clearfix {margin: 0;}
+	.sign_modal .ap-title {font-size: 2rem;}
+	#loginForm .input--custom input,
+	#registerForm .input--custom input {height: 30px; font-size: 1.3rem;}
+	#loginForm .clearfix .submit, #registerForm .clearfix .submit {height: 30px; font-size: 1.3rem;}
+	.ap-modal_inner .ap-header .ap-title {font-size: 1.8rem; margin: 0 0 10px;}
+	.ap-modal_inner .ap-header .ap-header-actions-btn-close {top: 9px;}
+
+}

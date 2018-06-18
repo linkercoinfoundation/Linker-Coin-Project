@@ -1,0 +1,62 @@
+@media (max-width: 767px) {
+	.page_list {width: 100%; margin: 30px 0 0;}
+	.page_list ul li {width: 33.33%; float: left; margin: 0 0 5px; padding: 0 0 5px; font-size: 1rem; font-family: 'Roboto', 'Noto Sans Korean', sans-serif; font-weight: normal;}
+	.page_list ul li.active {border-bottom: none;}
+	.board_common {width: 100%; min-height: auto; margin: 0 auto 30px;}
+	.board_common .pagination {margin: 30px 0 20px;}
+	.board_common .category_list ul {height: 34px;}
+	.board_common .category_list ul li {font-size: 1.1rem; line-height: 34px;}
+	.board_common .category_list ul li a {line-height: 34px;}
+	.board_common .search_wrap {padding: 20px 0;}
+	.board_common .search_wrap input {width: calc(100% - 40px); height: 34px;}
+	.board_common .search_wrap a {width: 40px; height: 34px;}
+	.board_common .search_wrap a i {line-height: 34px; font-size: 20px;}
+	#boardList .notice_wrap {padding: 0 5px; box-sizing: border-box;}
+	#boardList .notice_wrap .bo_navi {padding: 0 0 5px;}
+	#boardList .notice_wrap table tr td {padding: 5px;}
+	#boardList .notice_wrap table tr .ca_name {width: 60px; font-size: 1rem;}
+	#boardList .notice_wrap table tr .title {width: calc(100% - 120px); font-size: 1rem;}
+	#boardList .notice_wrap table tr .title span {width: 100%;}
+	#boardList .notice_wrap table tr .date {width: 60px;}
+
+	#boardView .view_content {padding: 0 5px; box-sizing: border-box;}
+	#boardView .view_content .bo_title {padding: 0 0 5px;}
+	#boardView .view_content .bo_title h3 {width: 100%; font-size: 1.4rem; font-family: 'Roboto', 'Noto Sans Korean', sans-serif; font-weight: normal; }
+	#boardView .view_content .bo_title p {display: none;}
+	#boardView .view_content .bo_content {padding: 0 5px 30px; font-size: 1.1rem;}
+	#boardView .view_content .board_navi {margin: 30px 0 20px; font-family: 'Roboto', 'Noto Sans Korean', sans-serif; font-weight: normal; font-size: 1.1rem;}
+
+	#infoUse {width: 100%; margin: 20px auto 40px; padding: 0 10px; box-sizing: border-box;}
+	#infoUse h2 {font-size: 1.6rem; margin: 0 0 20px;}
+	#infoUse h3 {font-size: 1.4rem; margin: 0 0 10px;}
+	#infoUse dl dt {width: 100%; float: none; font-family: 'Roboto', 'Noto Sans Korean', sans-serif; font-size: 1.3rem;}
+	#infoUse dl dd {width: 100%; float: none; font-family: 'Roboto', 'Noto Sans Korean', sans-serif; font-size: 1.1rem; word-break: keep-all; margin: 0;}
+	#infoUse p {font-family: 'Roboto', 'Noto Sans Korean', sans-serif; font-size: 1.1rem;}
+	#infoUse > div {margin: 0 0 40px;}
+	#infoUse .withdraw_limit > div .link_more {padding: 5px 10px; font-size: 1rem;}
+	#infoUse table th {font-size: 1.2rem; font-family: 'Roboto', 'Noto Sans Korean', sans-serif; font-weight: normal;}
+	#infoUse table td {font-size: 1.1rem; font-family: 'Roboto', 'Noto Sans Korean', sans-serif; font-weight: normal; padding: 5px 0;}
+	#infoUse ul li {font-size: 1.1rem; font-family: 'Roboto', 'Noto Sans Korean', sans-serif; font-weight: normal; line-height: 1.4em; word-break: keep-all; padding-left: 15px; text-indent: -15px;}
+
+	#fee {width: 100%; margin: 20px auto 40px; padding: 0 10px; box-sizing: border-box;}
+	#fee h2 {font-size: 1.6rem; margin: 0 0 20px;}
+	#fee h3 {font-size: 1.4rem; margin: 0 0 10px;}
+	#fee .withdraw_fee p,
+	#fee .trade_fee p,
+	#fee p {font-family: 'Roboto', 'Noto Sans Korean', sans-serif; font-size: 1.1rem;}
+	#fee .withdraw_fee table th,
+	#fee .trade_fee table th {font-size: 1.3rem; font-family: 'Roboto', 'Noto Sans Korean', sans-serif; font-weight: normal;}
+	#fee .withdraw_fee table td,
+	#fee .trade_fee table td {font-size: 1.2rem; font-family: 'Roboto', 'Noto Sans Korean', sans-serif; font-weight: normal; padding: 5px 0;}
+	#fee .trade_fee dl {margin: 30px 0 0;}
+	#fee .trade_fee dl dt {font-size: 1.5rem; margin: 0 0 10px;}
+	#fee .trade_fee dl dd {font-family: 'Roboto', 'Noto Sans Korean', sans-serif; font-size: 1.2rem;}
+
+	#terms {width: 100%; padding: 0 10px; box-sizing: border-box;}
+	#terms .title h2 {font-size: 1.7rem;}
+	
+	#faq .category_list ul {height: auto;}
+	#faq .faq_wrap > div .faq_tit p {width: auto; line-height: 1.4em; font-size: 1.2rem; float: none;}
+	#faq .faq_wrap > div .faq_tit strong {width: 100%; font-size: 1.2rem; line-height: 1.4em; float: none; display: block; padding-right: 20px; box-sizing: border-box;}
+	#faq .faq_wrap > div .faq_cont > div {padding: 10px;}
+}

@@ -1,0 +1,49 @@
+@media (max-width: 767px) {
+	#wrap.exchange {min-width: auto;}
+	#exchange {min-width: 100%; padding: 10px 10px 350px; position: relative;}
+	#coinNavi {padding: 5px 10px;}
+	#exchange #chartWrap {width: 100%; float: none; overflow: hidden;}
+	#exchange #tradeWrap {width: 100%; float: none; padding: 0;}
+	#exchange #tradeWrap #orderBookWrap {width: 100%; float: none;}
+	#exchange #tradeWrap #orderWrap {width: 100%; float: none; padding: 0;}
+	#exchange #chartWrap #marketValue {padding: 0; margin: 0 0 10px;}
+	#exchange #chartWrap #orderTable {position: absolute; bottom: 10px; float: none; padding: 0 10px; box-sizing: border-box; left: 0; margin: 0; background: none;}
+
+	#coinNavi .dropdown-menu {width: 100%; left: 0; padding: 0 10px; box-sizing: border-box;}
+	#coinNavi .dropdown-menu ul {width: 33.33%; margin: 0 !important; padding: 0 5px; box-sizing: border-box; overflow: hidden;}
+
+	#exchange #chartWrap #chart { display: none; }
+
+	#marketValue .ticker_wrap {height: auto; overflow: hidden; padding: 10px 6px 5px;}
+	#marketValue .ticker-wrapper {display: block;}	
+	#marketValue .last_price_wrap h4 {font-size: 1.7rem;}
+	#marketValue .coin_name {flex: none; float: left;}
+	#marketValue .coin_name h3 {position: static; top: 0; transform: translateY(0); line-height: 1em;}
+	#marketValue .coin_name h3 span {margin: 5px 0 0;}
+	#marketValue .last_price_wrap {flex: none; margin: 0; float: right;}
+	#marketValue .last_price_wrap > div {position: static; top: 0; transform: translateY(0);}
+	#marketValue .price_24h {width: 40%; float: left; flex: none; padding: 10px 0 0; clear: both; display: none;}
+	#marketValue .vol_24h {width: 60%; float: left; flex: none; padding: 10px 0 0; display: none;}
+	#marketValue .day-stat {font-size: 1rem; height: auto;}
+	#ap-trading-view-chart {height: 220px !important;}
+
+	#orderBook #bookTable #askRows,
+	#orderBook #bookTable #bidRows {height: 150px !important; overflow-y: auto;}
+
+	#orderEntry .trade_select label {font-size: 1.2rem; height: 24px; line-height: 24px;}
+	#orderEntry .entry_wrap .summary-wrap {font-size: 1.2rem;}
+
+	#trades {height: 183px;}
+	#trades #tradesContainer {height: 150px;}
+
+	#orderBook {width: 100%; overflow: hidden; margin: 0 0 10px;}
+
+	#accountBalances {padding: 0;}
+
+	#chatWrap {display: none;}
+
+	#orderTable .tab_list {background: #fff;}
+	#orderTable .tab_container {background: #fff; height: 240px;}
+	#orderTable .tab_container .m_tbl_wrap {width: 100%; overflow-x: scroll;}
+	#orderTable .tab_container table {width: 600px;}
+}

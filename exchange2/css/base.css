@@ -1,0 +1,118 @@
+@charset "UTF-8";
+/*
+---------------------------------------------------------------
+*
+* base
+*
+---------------------------------------------------------------
+*/
+
+@import url(https://cdn.rawgit.com/theeluwin/NotoSansKR-Hestia/master/stylesheets/NotoSansKR-Hestia.css);
+
+/* css reset */
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p,
+blockquote, pre, a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub,
+sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section,
+summary, time, mark, audio, video {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+em {
+  font-style: normal;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+table {
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+
+body, input, textarea, select, button, table {
+  font-family: 'Roboto', 'Noto Sans Korean', sans-serif;
+}
+
+body, div, h1, h2, h3, h4, h5, h6, ul, ol, li, dl, dt, dd, p, form, fieldset, input, table, tr, th, td {
+  padding: 0;
+  margin: 0;
+  font-family: 'Roboto', 'Noto Sans Korean', sans-serif;
+  line-height: 1.5em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: 100%;
+  font-weight: normal;
+}
+
+fieldset, img {
+  vertical-align: top;
+  border: 0;
+}
+
+address {
+  font-style: normal;
+}
+
+/* a-style */
+a {
+  color: #333;
+  text-decoration: none;
+}
+
+a:hover, a:active, a:focus {
+  text-decoration: none;
+}
+
+legend {
+  display: none;
+}
+
+/* mobile font resizing */
+@media (max-width: 360px) {
+  html {
+    font-size: 12px;
+    line-height: 1.5rem;
+  }
+}
+
+@media (min-width: 361px) and (max-width: 550px) {
+  html {
+    font-size: 13px;
+  }
+}
+
+@media (min-width: 551px) and (max-width: 767px) {
+  html {
+    font-size: 13px;
+  }
+}
+@media (min-width: 768px) and (max-width: 1024px) {
+  html {
+    font-size: 14px;
+  }
+}
+@media (min-width: 1025px){
+  html {
+    font-size: 15px;
+  }
+}
+
+.loggedin .hide-loggedin {
+  display: none !important;
+}
+
+.loggedout .show-loggedin {
+  display: none !important;
+}

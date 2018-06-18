@@ -1,0 +1,31 @@
+@media (max-width: 767px) {
+	.wallet_wrap {min-height: auto; margin: 30px auto 40px; padding: 0 5px; box-sizing: border-box;}
+	.wallet_wrap .page_link {margin: 0 0 40px;}
+	.wallet_wrap .page_link ul li {font-size: 1.4rem;}
+	#wallet .wallet_info {margin: 0 0 40px;}
+	#wallet .wallet_info h3 {font-size: 1.2rem; padding: 10px; font-family: 'Roboto', 'Noto Sans Korean', sans-serif;}
+	#wallet .wallet_info h3 .idChk {margin-right: 5px;}
+	#wallet .wallet_info h3 strong {clear: both; display: block; float: left; margin-left: 25%;}
+	#wallet .wallet_info h3 .krw {float: left; margin-left: 5px;}
+	#wallet .asset_balance .tit_list ul li {width: 25% !important; font-family: 'Roboto', 'Noto Sans Korean', sans-serif; font-size: 1.1rem; font-weight: normal;}
+	#wallet .ap-balances .balances_list .row > div {font-size: 1.1rem;}
+	#wallet .ap-balances .balances_list .currency-name {font-family: 'Roboto', 'Noto Sans Korean', sans-serif; font-size: 1.1rem; font-weight: normal; padding-left: 0; word-break: keep-all; background: none;}
+	#wallet .ap-balances .balances_list .balances_name {width: 25%;}
+	#wallet .ap-balances .balances_list .balances_num {width: 25%;}
+	#wallet .ap-balances .balances_list .balances_hold {width: 25%;}
+	#wallet .ap-balances .balances_list .balances_wait {width: 25%;}
+	#wallet .ap-balances .balances_list .row .balances_btn {float: right; width: auto; margin: 10px 10px 0 0;}
+	#wallet .ap-balances .balances_list .row .balances_btn button {font-size: 1.1rem; }
+	#wallet .ap-balances .balances_list .balances_btn .deposit-button {margin-right: 5px;}
+
+	#transactionDetails .tab_container .tab_list ul li {font-size: 1.2rem; height: 40px; line-height: 40px; font-family: 'Roboto', 'Noto Sans Korean', sans-serif; font-weight: normal;}
+	#transactionDetails .table-responsive {width: 100%; overflow-x: auto;}
+	#transactionDetails .tab_container .tab_contant table {width: 650px;}
+
+
+	/* MODAL POPUP */
+	.ap-modal_inner {width: 96% !important; height: 90%; overflow-y: scroll; left: 2%; top: 5%; transform: translate(0);}
+	.deposit_wrap p {font-size: 1.2rem; font-family: 'Roboto', 'Noto Sans Korean', sans-serif; font-weight: normal !important;}
+	.deposit_wrap .inf_wrap .form-group label {font-size: 1.3rem; font-family: 'Roboto', 'Noto Sans Korean', sans-serif;}
+	.deposit_wrap .inf_wrap .form-group > div {width: calc(100% - 80px);}
+}

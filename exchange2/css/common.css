@@ -1,0 +1,853 @@
+/* BUTTON TYPE */
+
+
+/* BUTTON COMMON CSS */
+.btn {
+	color: white;
+    cursor: pointer;
+    display: inline-block;
+    border: 1px solid rgba(0,0,0,0.21);
+    border-bottom-color: rgba(0,0,0,0.34);
+    text-shadow: 0 1px 0 rgba(0,0,0,0.15);
+    box-shadow: 0 1px 0 rgba(255,255,255,0.34) inset, 0 2px 0 -1px rgba(0,0,0,0.13), 0 0px 0 -1px rgba(0,0,0,0.08), 0 3px 13px -1px rgba(0,0,0,0.21);
+    border: none;
+    padding: 8px 25px;
+    font-size: 16px;
+    background: #222;
+}
+
+/*
+ 180524 mjh 버튼스타일수정
+.btn {
+	color: white;
+	cursor: pointer;
+	display: inline-block;
+	border: 1px solid rgba(0,0,0,0.21);
+	border-bottom-color: rgba(0,0,0,0.34);
+	text-shadow:0 1px 0 rgba(0,0,0,0.15);
+	box-shadow: 0 1px 0 rgba(255,255,255,0.34) inset, 
+				      0 2px 0 -1px rgba(0,0,0,0.13), 
+				      0 3px 0 -1px rgba(0,0,0,0.08), 
+				      0 3px 13px -1px rgba(0,0,0,0.21);
+}
+*/
+.btn:active {
+	top: 1px;
+	border-color: rgba(0,0,0,0.34) rgba(0,0,0,0.21) rgba(0,0,0,0.21);
+	box-shadow: 0 1px 0 rgba(255,255,255,0.89),0 1px rgba(0,0,0,0.05) inset;
+	position: relative;
+}
+
+/* BUTTON COLOR */
+/* 180524 mjh 버튼 색상 및 폰트사이즈 수정 */
+.btn_submit {
+	background: #045696;
+}
+.btn_cancel {
+	background: #999;
+	color: #fff;
+}
+.btn_modify {
+	background: #fff;
+	color: #454545;
+	border: 1px solid #ddd;
+}
+.btn_delete {
+	background: #fff;
+	color: #454545;
+	border: 1px solid #ddd;
+}
+.btn_col1 {
+	background: #fff;
+	color: #454545;
+	border: 1px solid #ddd;
+}
+
+/* BUTTON SIZE */
+.btn_small {
+	font-size: 14px;
+	padding: 5px 10px;
+	box-shadow: none;
+}
+.btn_medium {
+	padding: 5px 20px;
+}
+.btn_long {
+	padding: 6px 30px;
+}
+
+
+
+/* COMMON STYLE */
+.container {
+	width: 1200px;
+	margin: 0 auto;
+	overflow: hidden;
+}
+
+/* SCROLL TOP BUTTON*/
+#scrTop {
+	position: fixed;
+	bottom: 30px;
+	right: 30px;
+	transition: all .3s;
+}
+#scrTop.visible_off {
+	opacity: 0;
+	visibility: hidden;	
+}
+#scrTop.visible_on {
+	opacity: 1;
+	visibility: visible;
+}
+#scrTop button {
+	width: 40px;
+	height: 40px;
+	background: #003366;
+	color: #fff;
+	border-radius: 5px;
+	border: 1px solid rgba(255,255,255,.5);
+	cursor: pointer;
+	outline: none;
+}
+
+/* HEADER */
+#header {
+	width: 100%;
+	min-width: 1600px;
+	height: 70px;
+	background: #003366;
+}
+#header #headFixed {
+	width: 100%;
+	background: #003366;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 200;
+	transition: height .2s;
+}
+#header .scr_off {
+	height: 70px;	
+}
+#header .scr_on {
+	height: 50px;
+
+}
+#header .container {
+	height: 100%;
+	overflow: visible;
+}
+#header #logo {
+	width: 150px;
+	height: 100%;
+	float: left;
+	margin-right: 60px;
+}
+#header #logo a {
+	display: block;
+	width: 100%;
+	position: relative;
+	top: 50%;
+	transform: translateY(-50%);
+}
+#header #logo a img {
+	width: 100%;
+}
+#header .menu {
+	float: left;
+	position: relative;
+	top: 50%;
+	transform: translateY(-50%);
+}
+#header .menu ul li {
+	float: left;
+	margin-left: 100px;
+	font-family: 'NanumSquare';
+	font-size: 17px;
+	font-weight: bold;
+}
+#header .menu ul li.logout-hide {
+	display: none;
+}
+#header .menu ul li:first-child {
+	margin-left: 0;
+}
+#header .menu ul li a {
+	color: #fff;
+}
+
+#header .account_navi {
+	float: right;
+	position: relative;
+	top: 50%;
+	transform: translateY(-50%);
+	margin-left: 50px;
+}
+#header .account_navi ul li {
+	float: left;
+	font-size: 13px;
+	margin-left: 10px;
+}
+#header .account_navi ul li a {
+	color: #fff;
+	border: 1px solid #fff;
+	box-sizing: border-box;
+	padding: 5px 10px;
+	display: block;
+}
+#header .lang_navi {
+	float: right;
+	position: relative;
+	top: 50%;
+	transform: translateY(-50%);
+}
+#header .lang_navi p {
+	color: #fff;
+	cursor: pointer;
+	background-repeat: no-repeat;
+	background-position: 0 50%;
+	padding-left: 30px;
+}
+#header .lang_navi .lang_en {
+	background-image: url(/images/icon/en.png);
+}
+#header .lang_navi .lang_kr {
+	background-image: url(/images/icon/kr.png);
+}
+#header .lang_navi p i {
+	position: relative;
+	top: 2px;
+	font-size: 16px;
+}
+#header .lang_navi ul {
+	width: 140%;
+	position: absolute;
+	background: rgba(0,0,0,.8);
+	padding: 10px 10px;
+	margin: 10px 0 0 -20%;
+	box-sizing: border-box;
+	font-size: 15px;
+	font-family: 'NanumSquare';
+}
+#header .lang_navi ul.lang_off {
+	display: none;
+}
+#header .lang_navi ul.lang_on {
+	display: block;
+}
+#header .lang_navi ul li {
+	cursor: pointer;
+	color: #fff;
+	text-indent: 30px;
+	background-repeat: no-repeat;
+	background-position: 0 50%;
+}
+#header .lang_navi ul li:first-child {
+	margin: 0 0 10px;
+}
+#header .lang_navi ul .lang_kr {
+	background-image: url(/images/icon/kr.png);
+}
+#header .lang_navi ul .lang_en {
+	background-image: url(/images/icon/en.png);
+}
+/* HEADE END */
+
+
+
+/* FOOTER */
+#footer {
+	width: 100%;
+	min-width: 1200px;
+	overflow: hidden;
+}
+#footer .navi_bar {
+	width: 100%;
+	height: 50px;
+	overflow: hidden;
+	border-top: 1px solid #e4e7ea;
+	border-bottom: 1px solid #e4e7eb;
+}
+#footer .navi_bar .container {
+	position: relative;
+	top: 50%;
+	transform: translateY(-50%);
+}
+#footer .navi_bar ul li {
+	width: 16.66%;
+	font-family: 'NanumSquare';
+	font-size: 17px;
+	font-weight: bold;
+	float: left;
+	text-align: center;
+}
+#footer .foot_content {
+	width: 100%;
+	overflow: hidden;
+	background: #003366;
+	padding: 35px 0 25px;
+}
+#footer .foot_content h2 {
+	width: 150px;
+	float: left;
+	margin-right: 30px;
+}
+#footer .foot_content h2 a {
+	width: 100%;
+	display: block;
+}
+#footer .foot_content h2 a img {
+	width: 100%;
+}
+#footer .foot_content .foot_info {
+	width: 1000px;
+	float: left;
+}
+#footer .foot_content .address {
+	width: 100%;
+	overflow: hidden;
+	color: #fff;
+	margin: 0 -20px 20px 0;
+}
+#footer .foot_content .address span {
+	margin-right: 20px;
+	font-weight: 400;
+	font-size: 15px;
+}
+#footer .foot_content .address span:first-child {
+	margin-left: 0;
+}
+#footer .foot_content .cs_center {
+	width: 100%;
+	overflow: hidden;
+	margin: 0 0 20px;
+}
+#footer .foot_content .cs_center h3 {
+	float: left;
+	color: #fff;
+	font-weight: bold;
+	margin-right: 20px;
+	font-family: 'Roboto', 'NanumSquare', sans-serif;
+	font-size: 17px;
+}
+#footer .foot_content .cs_center .txt_cont {
+	float: left;
+	color: #fff;
+}
+#footer .foot_content .cs_center .txt_cont > div {
+	width: 100%;
+	overflow: hidden;
+	margin: 0 0 8px;
+}
+#footer .foot_content .cs_center .txt_cont > div a {
+	display: inline-block;
+	vertical-align: top;
+	color: #fff;
+}
+#footer .foot_content .cs_center .txt_cont > div a i {
+    display: inline-block;
+	font-size: 17px;
+    margin: 0 5px 0 0;
+    vertical-align: middle;
+}
+#footer .foot_content .cs_center .txt_cont .area {
+	float: left;
+	margin-right: 40px;
+	font-family: 'Roboto', 'NanumSquare', sans-serif;
+	font-size: 17px;
+}
+#footer .foot_content .cs_center .txt_cont .area a {
+	color: #fff;
+}
+#footer .foot_content .cs_center .txt_cont ul {
+	display: inline-block;
+	vertical-align: top;
+}
+#footer .foot_content .cs_center .txt_cont ul li {
+	float: left;
+	font-family: 'NanumSquare';
+	font-size: 17px;
+	margin: 0 0 0 10px;
+}
+#footer .foot_content .cs_center .txt_cont ul li:first-child {
+	margin-left: 0;
+}
+#footer .foot_content .cs_center .txt_cont ul li i {
+	margin-right: 3px;
+	position: relative;
+	top: 2px;
+}
+#footer .foot_content .cs_center .txt_cont ul li a {
+	color: #fff;
+}
+#footer .foot_content .copyright {
+	width: 100%;
+	overflow: hidden;
+}
+#footer .foot_content .copyright p {
+	font-size: 14px;
+	color: #ddd;
+}
+
+/* FOOTER END */
+
+
+
+
+/* MODAL COMMON CSS */
+.sign_modal {
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	background: rgba(0,0,0,0.85);
+	z-index: 300;
+	display: none;
+}
+.modal_content {
+	width: 400px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translateY(-50%);
+	background: #fff;
+	margin-left: -200px;
+	padding: 20px 30px;
+	box-sizing: border-box;
+	position: relative;
+}
+.modal_content .close-m {
+	position: absolute;
+	right: 10px;
+	top: 10px;
+	font-size: 20px;
+	font-weight: bold;
+	cursor: pointer;
+}
+.modal_content .information-block,
+.modal_content .error_msg {
+	width: 100%;
+	overflow: hidden;
+	text-align: center;
+	font-size: 16px;
+	color: #f7694d;
+	margin: 0 0 10px;
+}
+/* MODAL END */
+
+/* LOGIN MODAL */
+
+/* 2FA CSS */
+.ap-modal {
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	outline: none;
+	z-index: 300;
+}
+.ap-modal_inner {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	background: #fff;
+	padding: 10px 20px;
+	box-sizing: border-box;
+	border-radius: 5px;
+	transform: translate(-50%, -50%);
+}
+.ap-modal_inner .ap-header .ap-title {
+	/*width: 100%;
+	overflow: hidden;
+	border-bottom: 2px solid #003366;
+	font-size: 30px;
+	font-family: 'NanumSquare';
+	font-weight: 900;
+	margin: 0 0 20px;*/
+	width: 100%;
+	overflow: hidden;
+	border-bottom: 2px solid #003366;
+	font-size: 25px;
+	font-family: 'NanumSquare';
+	font-weight: 900;
+	margin: 0 0 20px;
+	padding: 0 40px 10px 0;
+	line-height: 30px;
+	word-break: keep-all;
+	box-sizing: border-box;
+}
+.ap-modal_inner .ap-header .ap-header-actions {
+	/*position: absolute;
+	top: 0;
+	right: 0;
+	font-size: 24px;*/
+	position: static;
+	font-size: 24px;
+	float: none !important;
+}
+.ap-modal_inner .ap-header .ap-header-actions-btn-close {
+	cursor: pointer;
+	position: absolute;
+	top: 12px;
+	right: 24px;
+}
+.ap-modal_inner .pop_form2 {
+	width: 100%;
+	overflow: hidden;
+}
+.ap-modal_inner .pop_form2 .row {
+	width: 100%;
+	overflow: hidden;
+	margin: 0 0 15px;
+}
+.ap-modal_inner .pop_form2 .form-group label {
+	line-height: 34px;
+	float: left;
+	width: 120px;
+}
+.ap-modal_inner .pop_form2 .form-group label.error {
+	width: auto;
+}
+.ap-modal_inner .pop_form2 .form-group > div {
+	float: left;
+}
+.ap-modal_inner .pop_form2 .form-group > div input {
+	width: 200px;
+	height: 34px;
+	text-indent: 5px;
+	box-sizing: border-box;
+	border: none;
+	border-bottom: 1px solid #333;
+	outline: none;
+	background: none;
+}
+.ap-modal_inner .pop_form2 .form-group select {
+	width: 200px;
+	height: 30px;
+	background: none;
+}
+.ap-modal_inner .pop_form2 .form-group > div span {
+	line-height: 34px;
+	font-size: .9rem;
+}
+.ap-modal_inner .pop_form2 .form-group > div a {
+	line-height: 34px;
+	cursor: pointer;
+	font-size: .9rem;
+}
+.ap-modal_inner .pop_form2 .security_lv p {
+	margin: 0 0 5px;
+}
+.ap-modal_inner .pop_form2 .security_lv label input {
+	vertical-align: middle;
+	margin-right: 3px;
+}
+.ap-modal_inner .pop_form2 .clearfix .pull-right {
+	width: 100%;
+	overflow: hidden;
+	margin: 15px 0 0;
+}
+.ap-modal_inner .pop_form2 .clearfix .pull-right .btn-action {
+	width: 120px;
+	height: 34px;
+	background: #161a24;
+	display: block;
+	margin: 0 auto;
+	border: none;
+	color: #fff;
+	border-radius: 3px;
+	cursor: pointer;
+}
+.ap-modal_inner .twofa_modal {
+	width: 100%;
+	overflow: hidden;
+}
+.ap-modal_inner .twofa_modal .form-group {
+	width: 100%;
+	overflow: hidden;
+	margin: 30px 0;
+}
+.ap-modal_inner .twofa_modal .form-group label {
+	width: 150px;
+	line-height: 34px;
+	float: left;
+}
+.ap-modal_inner .twofa_modal .form-group > div {
+	float: left;
+}
+.ap-modal_inner .twofa_modal .form-group > div input {
+	width: 200px;
+	height: 34px;
+	box-sizing: border-box;
+	text-indent: 5px;
+	outline: none;
+}
+.ap-modal_inner .twofa_modal .clearfix {
+	width: 100%;
+	overflow: hidden;
+}
+.ap-modal_inner .twofa_modal .clearfix .btn-default {
+	padding: 5px 10px;
+	background: #f7694d;
+	border: none;
+	color: #fff;
+	cursor: pointer;
+}
+.ap-modal_inner .twofa_modal .clearfix .pull-right .btn_close {
+	padding: 5px 10px;
+	background: none;
+	border: 1px solid #666;
+	box-sizing: boreder-box;
+	cursor: pointer;
+}
+.ap-modal_inner .twofa_modal .clearfix .pull-right .btn_submit {
+	padding: 6px 10px;
+	background: #161a24;
+	border: none;
+	color: #fff;
+	cursor: pointer;
+}
+
+.sign_modal .ap-title {
+	width: 100%;
+	overflow: hidden;
+	border-bottom: 2px solid #003366;
+	font-size: 30px;
+	font-family: 'NanumSquare';
+	font-weight: 900;
+	margin: 0 0 20px;
+}
+
+#loginForm .input--custom,
+#registerForm .input--custom {
+	width: 100%;
+	overflow: hidden;
+	margin: 0 0 10px;
+	display: block;
+}
+
+#loginForm .input--custom input,
+#registerForm .input--custom input {
+	width: 100%;
+	height: 40px;
+	border: 1px solid #ccc;
+	text-indent: 10px;
+	box-sizing: border-box;
+	font-size: 17px;
+}
+#loginForm .clearfix,
+#registerForm .clearfix {
+	width: 100%;
+	overflow: hidden;
+	margin: 20px 0 0;
+}
+#loginForm .clearfix .submit,
+#registerForm .clearfix .submit {
+	width: 100%;
+	height: 40px;
+	background: #003366;
+	font-size: 17px;
+	font-family: 'NanumSquare';
+}
+#loginForm .clearfix .sign_wrap,
+#registerForm .clearfix .sign_wrap {
+	width: 100%;
+	overflow: hidden;
+	margin: 20px 0 0;
+	text-align: center;
+}
+#loginForm .clearfix .sign_wrap a:first-child,
+#registerForm .clearfix .sign_wrap a:first-child {
+	margin-right: 10px;
+	padding-right: 10px;
+	position: relative;
+}
+#loginForm .clearfix .sign_wrap a:first-child:after,
+#registerForm .clearfix .sign_wrap a:first-child:after {
+	content: '';
+	width: 1px;
+	height: 14px;
+	background: #333;
+	position: absolute;
+	right: 0;
+	top: 2px;
+	display: block;
+}
+
+/* LOGIN END */
+
+
+
+
+/* REGISTER MODAL POPUP */
+#register {
+	width: 500px;
+	position: fixed;
+	top: 30% !important;
+	left: 50%;
+	margin-left: -250px;
+	background: rgba(0,0,0,.9);
+	visibility: hidden;
+	opacity: 0;
+}
+#register .error_msg {
+	color: #fff;
+	text-align: center;
+	margin: 15px 0 0;
+}
+#register .close-register {
+	display: block;
+	color: #fff;
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	font-size: 24px;
+	cursor: pointer;
+}
+#register #registerForm {
+	width: 100%;
+	height: 100%;
+	padding: 40px 40px 20px;
+	box-sizing: border-box;
+}
+#register #registerForm .pad,
+#register #registerForm .pad > span {
+	width: 100%;
+	overflow: hidden;
+	display: block;
+}
+#register #registerForm .input--custom {
+	width: 100%;
+	overflow: hidden;
+	display: block;
+	margin: 0 0 10px;
+}
+#register #registerForm .input--custom i {
+	width: 40px;
+	float: left;
+	color: #fff;
+	font-size: 20px;
+	line-height: 34px;
+}
+#register #registerForm .input--custom .form-group {
+	width: 380px;
+	float: right;
+}
+#register #registerForm .input--custom .form-group input {
+	width: 100%;
+	height: 34px;
+	float: left;
+	border: none;
+	text-indent: 5px;
+	background: none;
+	color: #fff;
+	border-bottom: 1px solid #fff;
+	outline: none;
+}
+#register #registerForm .keyPermissions {
+	color: #ccc;
+	font-size: 12px;
+	margin: 25px 0 0;
+}
+#register #registerForm .keyPermissions a {
+	color: #fff;
+	cursor: pointer;
+}
+#register #registerForm .clearfix {
+	width: 100%;
+	overflow: hidden;
+}
+#register #registerForm .clearfix .btn-lg {
+	width: 200px;
+	height: 34px;
+	background: none;
+	border: 1px solid #fff;
+	border-radius: 5px;
+	display: block;
+	margin: 0 auto;
+	color: #fff;
+	cursor: pointer;
+}
+
+
+
+/* ERROR MSG MODAL */
+.bootstrap-growl {
+	min-width: 200px;
+	background: #fff;
+	padding: 10px 30px 10px 10px;
+}
+.bootstrap-growl a {
+	position: absolute;
+	top: 5px;
+	right: 5px;
+}
+.bootstrap-growl a i {
+	font-size: 18px;
+}
+
+
+/* IE POPUP */
+
+#ieWarn {
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	background: rgba(0,0,0,.95);
+	z-index: 9999;
+}
+#ieWarn .txt_wrap {
+	width: 700px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-left: -350px;
+	transform: translateY(-50%);
+	background: #fff;
+	border-radius: 3px;
+	padding: 20px 10px;
+	box-sizing: border-box;
+}
+#ieWarn .txt_wrap h3 {
+	font-size: 24px;
+	font-family: 'Roboto', 'NanumSquare', sans-serif;
+	border-bottom: 2px solid #003366;
+	margin: 0 0 10px;
+	padding: 0 0 5px;
+	text-align: center;
+}
+#ieWarn .txt_wrap h3 i {
+	position: relative;
+	top: 2px;
+	font-size: 20px;
+	margin-right: 3px;
+}
+#ieWarn .txt_wrap p {
+	font-size: 20px;
+	font-family: 'Roboto', 'NanumSquare', sans-serif;
+	text-align: center;
+	margin: 0 0 15px;
+}
+#ieWarn .txt_wrap .link_wrap {
+	text-align: center;
+}
+#ieWarn .txt_wrap .link_wrap a {
+	color: #003366;
+	border-bottom: 1px solid #003366;
+	margin: 0 10px;
+	font-size: 17px;
+	font-family: 'Roboto', 'NanumSquare', sans-serif;
+}
+#ieWarn .txt_wrap .link_wrap a:hover {
+	color: #e2242a;
+}
+#ieWarn .txt_wrap .link_wrap a .xi-edge,
+#ieWarn .txt_wrap .link_wrap a .xi-chrome,
+#ieWarn .txt_wrap .link_wrap a .xi-firefox {
+	padding-right: 3px;
+}
