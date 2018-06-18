@@ -1,0 +1,2 @@
+User-agent: All
+Disallow: /chatban, /KYC, /write, /faqWrite, /security
