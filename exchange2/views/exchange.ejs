@@ -1,0 +1,241 @@
+<% include ./layout/head %>
+<link rel="stylesheet" type="text/css" href="css/exchange.css">
+<link rel="stylesheet" type="text/css" href="css/m_exchange.css">
+<% include ./layout/header %>
+
+<div id="coinNavi">
+    <div ap-widget="InstrumentSelect"></div>
+</div>
+<div id="exchange">
+    <div id="chartWrap">
+        <div id="marketValue">
+            <div ap-widget="Ticker" class="ticker_wrap"></div>
+        </div>
+        <div id="chart">
+            <div ap-widget="Chart" hide-header></div>
+        </div>
+        <div id="orderTable">
+            <div class="tab_list">
+                <ul>
+                    <li data-tab="historyTab" class="active" ap-translate="ORDER_HISTORY.UNFINISHED_ORDER">Open Orders</li>
+                    <li data-tab="tradesTab" ap-translate="ORDER_HISTORY.TITLE_TEXT">Filled Orders</li>
+                    <li data-tab="withdrawTab" ap-translate="ORDER_HISTORY.WITHDRAW_STATUS">Transfer History</li>
+                </ul>
+            </div>
+            <div class="tab_container">
+                <div id="historyTab" class="tab_cont">
+                    <div ap-widget='OpenOrders' hide-header="true"></div>
+                </div>
+                <div id="tradesTab" class="tab_cont">
+                    <div class="ap-OrdersTables" ap-widget='Trades' hide-header></div>
+                </div>
+                <div id="withdrawTab" class="tab_cont">
+                    <div ap-widget='AccountTransactions' hide-header="true"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="tradeWrap">
+        <div id="orderBookWrap">
+            <div id="accountBalances">
+                <div ap-widget="AccountBalances" hide-header></div>
+            </div>
+            <div id="orderBook">
+                <h3 class="cont_tit" ap-translate="FOOTER.PRICING_TEXT">Price List</h3>
+                <div ap-widget="OrderBook"></div>
+            </div>
+        </div>
+        <div id="orderWrap">
+            <div id="orderEntry">
+                <div ap-widget="OrderEntry"></div>
+            </div>
+            <div id="trades">
+                <h3 class="cont_tit" ap-translate="EXCHANGE_PAGE.TRADE">Trade</h3>
+                <div ap-widget="Public_Trades_Narrow" id="tradesContainer"></div>
+            </div>
+            <div id="chatWrap">
+                <div class="chat_contant">
+                    <span class="login-chk" ap-translate="SIGNIN_MODAL.CHAT_LOGIN">You need to login</span>
+                    <h3 class="cont_tit" ap-translate="EXCHANGE_PAGE.CHAT">Chat Room</h3>
+                    <div class="chat_log">
+                        <ul id="messages"></ul>
+                    </div>
+                    <form action="" id="chat_inf">
+                        <p style="text-align: center" ap-translate="EXCHANGE_PAGE.PREPARATION">Preparing for chat service.</p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--180529 jmj-->
+<div id="otp-popup-wrap">
+    <div class="otp-popup">
+        <span class="close-btn close">
+            <i class="xi-close"></i>
+        </span>
+        <span class="caution"><i class="xi-error"></i></span>
+        <p class="b-txt" ap-translate="EXCHANGE_PAGE.OTP_POPUP01">Account without OTP authentication<br/>can be at serious risk</p>
+        <p class="s-txt" ap-translate="EXCHANGE_PAGE.OTP_POPUP02">We strongly recommend you to enable OTP on your account</p>
+    </div>    
+    <div class="otp-wrap-bg close"></div>
+</div>
+
+<% include ./layout/footer %>
+
+
+
+    <!-- <div id="resetPassword" ap-wrapper="ResetPassword"></div>
+    <div id="verifyEmail" ap-wrapper="VerifyEmail"></div>
+    <div id="merchantDepositConfirmation" ap-wrapper="MerchantDepositConfirmation"></div> -->
+
+    <!-- Third Party -->
+    <script src="js/lib/growl.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.2/TweenMax.min.js"></script>
+    <script type="text/babel" src="js/BBscript.js"></script>
+
+    <!-- Charting Library -->
+    <script type="text/javascript" src="libs/charting_library_new/charting_library.min.js"></script>
+    <script type="text/javascript" src="libs/charting_library_new/datafeed/udf/datafeed.js"></script>
+    <script type="text/javascript" src="libs/charting_library_new/datafeed/ChartAPI.js"></script>
+
+
+    <!-- AlphaPoint -->
+    <script src="js/config.js"></script>
+    <script src="js/library.min.js"></script>
+    <script>
+        AlphaPoint.config.templateStyle = "retail";
+    </script>
+    <script src="js/widgets.min.js"></script>
+    <script src='js/tester.js'></script>
+
+    <script type="text/javascript" src="js/tv_test.js"></script>
+ 
+    <script type="text/javascript">
+        AlphaPoint.getUser.subscribe(function(e) {
+            var scr = e.Use2FA;
+            if (scr == true) {
+                $('#otp-popup-wrap').remove();
+            } else if (scr == false) {
+                $('#otp-popup-wrap').show();
+            }
+            return;
+        });
+        $('.close').on('click', function(){
+            $('#otp-popup-wrap').fadeOut();
+        });
+            var ccc = AlphaPoint.prodPair.value;
+            if (ccc != "LNCKRW" && ccc != "LNCBTC" && ccc != "TUSDKRW" && ccc != "TRUEBTC" && ccc != "BTCTUSD" && ccc != "ETHTUSD" && ccc != "XRPTUSD" && ccc != "ARNKRW" && ccc != "TRUEKRW" && ccc != "BCHTUSD" && ccc != "ETCTUSD" && ccc != "LTCTUSD") {
+                $('head').append('<script src=\'js/tv_test.js\'><\/script>');
+                new TradingView.widget(AlphaPoint.config.chart);
+            }
+        $('#instrument-select').on('click', function() {
+            var dropmenu = $('#coinNavi .dropdown-menu');
+            if (dropmenu.hasClass('menu_on')) {
+                dropmenu.addClass('menu_off').removeClass('menu_on');
+            } else {
+                dropmenu.addClass('menu_on').removeClass('menu_off');
+            }
+        });
+        $('#orderTable .tab_list ul li').on('click', function() {
+            var tab = $(this).data('tab');
+            $('#orderTable .tab_container .tab_cont').hide();
+            $('#orderTable .tab_list ul li').removeClass("active");
+            $(this).addClass("active");
+            $('#'+tab).show();
+        })
+        $(window).on('load', function() {
+            setTimeout(function() {
+                $('#askRows .bookrow .quanPer').each(function(){
+                    var sd = $(this).text();
+                    var aa = new Array(sd);
+                });
+            }, 300);
+        })
+    </script>
+
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+
+        var name = '';
+        AlphaPoint.accountInfo.subscribe(function(e) {
+            // name = e.AccountName;
+            level = e.VerificationLevel;
+            if (!level) {
+                level = 0;
+            }
+            if (level) {
+                $('.chat_wrap #chat_inf').html('<input id="chatSubmit" autocomplete="off"  placeholder="메시지 작성" /><button>전송</button>');
+            } else {
+                $('.chat_wrap #chat_inf').html('<p>3레벨 이상 채팅 가능합니다.</p>');
+            }
+        });
+
+        
+
+
+        var socket = io();
+
+        $(document).ready(function() {
+            $('.chat_log').scrollTop($('#messages').height());
+        });
+        AlphaPoint.getUserConfig.subscribe(function(c){
+            for (var i in c) {
+                var key = c[i].Key;
+                var val = c[i].Value;
+                if (key == 'nickname') {
+                    name = val;
+                }
+            }
+        })
+
+        $('#chat_inf').submit(function(e){
+            AlphaPoint.getUser.subscribe(function(f){
+                var accountId = f.AccountId;
+                var chatSubmit = $('#chatSubmit').val();
+                if (name || chatSubmit != '') {
+                    socket.emit('chat message', name, chatSubmit, accountId);
+                };
+            })
+            $('#chatSubmit').val('');
+            return false;
+        });
+
+        socket.on('idChk', function(name,accountId){
+            var insertErrorMsg = $('<li>').html('<span style="color: red;">'+name+' 님은 채팅 금지입니다.</span>')
+            $('#messages').append(insertErrorMsg);
+            $('.chat_log').scrollTop($('#messages').height());
+        })
+
+        socket.on('chat message', function(name,msg,accountId){
+            if (!name) {
+                name = "user"+accountId;
+            }
+            var insertMsg = $('<li>').text(msg).prepend('<span data-id="'+accountId+'">'+name+': </span>');
+            $('#messages').append(insertMsg);
+            $('.chat_log').scrollTop($('#messages').height());
+
+            var chatlog = $('#messages').html();
+            sessionStorage.setItem("chatLog", chatlog);
+
+            function myChatActive(){
+                var userId = AlphaPoint.getUser.value.AccountId;
+                var chatArea = $('#messages li');
+
+                chatArea.each(function(){
+                    var chatUserId = $(this).find('span').attr('data-id');
+
+                    if(userId == chatUserId){
+                        $(this).addClass('on');
+                    }
+                });
+            }
+            myChatActive();
+        });        
+            var chatcont = sessionStorage.getItem("chatLog");
+            $('#messages').html(chatcont);
+    </script>
+</body>
+</html>

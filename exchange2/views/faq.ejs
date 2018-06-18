@@ -1,0 +1,156 @@
+<% include ./layout/head %>
+
+
+<script>
+    $(function(){
+        var page = location.href.split("page=")[1];
+        var index = page-1;
+
+        if(page == null) {
+            $(".pagination a:eq(0)").attr('class', 'current-page');
+        }
+
+        $(".pagination a:eq(" + index + ")").attr('class', 'current-page');
+    });
+    function deleteContents() {
+        $('.delete_confirm').show();
+    }
+    function searchContent() {
+        if($('#searchWord').val == ''){
+            alert("검색어를 입력해주세요!!!");
+        } else {
+            $('#searchAction').submit();
+        }
+    }
+</script>
+
+<link rel='stylesheet' href='/css/board.css' />
+<link rel='stylesheet' href='/css/m_board.css' />
+
+<% include ./layout/header %>
+<% include ./layout/board_navigation %>
+
+
+<div id="faq" class="board_common">
+    <div class="category_list">
+        <ul>
+            <li id="ca_list00"><a href="/faq" ap-translate="BALANCES.TAB_ALL">All</a></li>
+            <li id="ca_list01"><a href="/faqCategory?ca_name=입출금" ap-translate="WALLET.DEPOSIT">Deposit, Withdrawal</a></li>
+            <li id="ca_list02"><a href="/faqCategory?ca_name=거래" ap-translate="PUBLIC_TRADES.TITLE_TEXT">Trades</a></li>
+            <li id="ca_list03"><a href="/faqCategory?ca_name=수수료" ap-translate="FOOTER.FEES_TEXT">Fees</a></li>
+            <li id="ca_list04"><a href="/faqCategory?ca_name=인증/보안" ap-translate="FAQ.AUTHEN_SECURITY">Authentication/Security</a></li>
+            <li id="ca_list05"><a href="/faqCategory?ca_name=개인정보" ap-translate="FAQ.PERSONAL_INFO">Personal Information</a></li>
+            <li id="ca_list06"><a href="/faqCategory?ca_name=회원가입/탈퇴" ap-translate="FAQ.REGISTER_DEL">Sign up/Delete</a></li>
+        </ul>
+    </div>
+    <div class="search_wrap">
+        <div>
+            <form action="/faqSearch" method="get" id="searchAction" name="searchAction">
+                <input type="text" class="search_word" id="searchWord" name="searchWord">
+                <a href="#" onclick="searchContent();"><i class="xi-search"></i></a>
+            </form>
+        </div>
+    </div>
+    <div class="faq_wrap">
+        <%if(contents.length>0){%>
+        <%var i = 0;%>
+        <%contents.forEach(function(item){%>
+        <%i++;%>
+        <div>
+            <div class="faq_tit">
+                <p><%=item.category%></p>
+                <strong><%=item.title%></strong>
+                <i class="xi-caret-down"></i>
+            </div>
+            <div class="faq_cont">
+                <div>
+                    <%-item.contents%>
+                    <ul class="faq_btn lv_hide">
+                        <li><a href="/faqModify?id=<%=item._id%>" class="btn btn_modify btn_small">수정</a></li>
+                        <li>
+                            <input type="password" class="delPassword" name="delPassword" placeholder="비밀번호를 입력하면 삭제됩니다.">
+                            <button class="btn btn_cancel btn_small" value="<%=item._id%>" onclick="deleteConfirm(this.value);">삭제</button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <input type="hidden" name="<%=item._id%>">
+        
+        <%})%>
+        <%} else {%>
+            <p class="none_empty" ap-translate="ERROR.NOPOST">There is no post.</p>
+        <%}%>
+    </div>
+    <div class="pagination">
+        <%
+        if(searchWord != '') {
+            for(var i=1; i<=pagination; i++){
+        %>
+            <a href="/faq/search?searchWord=<%=searchWord%>&page=<%=i%>" class="next-page"><%=i%></a>
+        <%
+            }
+        } else {
+        for(var i=1; i<=pagination; i++){
+        %>
+        <a href="/faq?page=<%=i%>" class="next-page"><%=i%></a>
+        <%}}%>
+    </div>
+
+    <div class="btn_wrap"></div>
+</div>
+
+
+
+
+<% include ./layout/footer %>
+
+
+<script src="/js/lib/growl.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.2/TweenMax.min.js"></script>
+<script type="text/babel" src="js/BBscript.js"></script>
+
+<!-- AlphaPoint -->
+<script src="/js/config.js"></script>
+<script src="/js/library.min.js"></script>
+<script src="/js/widgets.min.js"></script>
+<script type="text/javascript" src="js/yong.js"></script>
+<script type="text/javascript">
+    AlphaPoint.config.templateStyle = 'retail';
+    faqChk();
+    faqCategory();
+    faqCont();
+</script>
+<script type="text/javascript">
+    function deleteConfirm(idv) {
+        var inputPassword = $('.delPassword').val();
+        var chkpw = checkPW(inputPassword, idv);
+        console.log(chkpw);
+
+        if(chkpw == true) {
+            location.href='/faqDelete?id='+idv;
+        } else {
+            alert("글 작성 시 입력한 비밀 번호를 입력해주세요");
+            return;
+        }
+    }
+    function checkPW(inputPassword, idv){
+        var result = '';
+
+        $.ajax({
+            url: '/faqPassword?id='+idv,
+            async: false,
+            success: function(password) {
+                if(inputPassword == password) result = true;
+                else result = false;
+            }
+        });
+        return result;
+    }
+</script>
+
+
+
+</body>
+</html>

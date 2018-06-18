@@ -1,0 +1,146 @@
+<% include ./layout/head %>
+<% include ./layout/header %>
+
+<div ap-widget="LoginRequired"></div>
+
+<div class="mypage_list">
+	<ul>
+		<li><a href="/myPage" ap-translate="MYPAGE.ACCOUNT">Account</a></li>
+		<li class="active"><a href="/security" ap-translate="MYPAGE.SECURITY">Security Settings</a></li>
+	</ul>
+</div>
+<div id="security">
+	<h1 ap-translate="MYPAGE.SECURITY">Security Settings</h1>
+	
+	<h2><span class="id_field"></span><em ap-translate="SECURITY.LEVEL_TXT1"> Your current security Level is </em><strong><span class="security_lev"></span><em ap-translate="SECURITY.LEVEL_TXT2"></em></strong><em ap-translate="SECURITY.LEVEL_TXT3"> </em></h2>
+	<div class="security_chk">
+		<div id="emailChk" class="chk-box">
+			<div class="cont">
+				<h4 class="cont01" ap-translate="SECURITY.EMAIL_AUTHEN">Email Authentication</h4>
+				<span class="email"></span>
+			</div>
+			<div class="chk_icon"><i class="xi-close-circle"></i></div>
+		</div>
+		<div id="otpChk" class="user-select chk-box">
+            <span class="tag tag_red" ap-translate="SECURITY.MUST">Mandatory</span>
+			<div class="cont">
+				<h4 class="cont02" ap-translate="SECURITY.GOOGLE_OTP">Google OTP Authentication</h4>
+				<div ap-wrapper="UserInfo" id="otpSet" hide-header class="btn-wrap">
+				    <a href="#" title="profile" class="btn btn_submit"><span class="menu-item-parent" ap-translate="SECURITY.OTP_SETTING">2FA Settings</span></a>
+				</div>
+				<p class="otp_txt" ap-translate="SECURITY.GOOGLE_COMPLETE">OTP Authentication Completed</p>
+			</div>
+			<div class="chk_icon"><i class="xi-close-circle"></i></div>
+		</div>
+		<div id="phoneChk" class="only-kor chk-box">
+			<div class="cont">
+				<h4 class="cont03" ap-translate="SECURITY.MOBILE_AUTHEN">Mobile phone Authentication</h4>
+				<p class="phone_chk"></p>
+				<form action="https://bitnaru.co.kr:800/hs_cnfrm_popup1.php" method="post" enctype="multipart/form-fata" name="phoneChkForm" id="phoneChkForm" target="popup_window">
+				<input type="hidden" name="accountId" value="" id="accountIdVal">
+				<button type="submit" id="phoneCheckBtn" class="btn btn_submit btn_small" ap-translate="SECURITY.MOBILE_AUTHEN">Mobile phone Authentication</button>
+				</form>
+			</div>
+			<div class="chk_icon"><i class="xi-close-circle"></i></div>
+		</div>
+		<div id="bankAddrChk" class="only-kor chk-box">
+			<div class="cont">
+				<h4 class="cont04" ap-translate="SECURITY.CHECKING_ACCOUNT">Checking Account Authentication</h4>
+				<p class="bank_chk"></p>
+				<button class="btn btn_submit" id="addrInput" onclick="modalOpen();" ap-translate="SECURITY.ADDRESS_MANAGEMENT">Address management</button>
+				<!-- <button class="btn btn_submit" id="addrOutput" onclick="banks();" ap-translate="SECURITY.WITHDRAWAL_ADDRESS">Withdrawal address</button> -->
+				<ul>
+					<li class="bank_name"></li>
+					<li class="bank_addr"></li>
+				</ul>
+			</div>
+			<div class="chk_icon">
+				<i class="xi-close-circle"></i>
+			</div>
+		</div>
+		<div id="KYCChk" class="user-select chk-box">
+			<span class="tag" ap-translate="SECURITY.CHOOSE">Optional(KYC)</span>
+			<div class="cont">
+				<h4 class="cont05" ap-translate="SECURITY.IDENTIFICATION">Identification</h4>
+				<div class="btn-wrap">
+					<a href="/kyc" class="btn btn_submit" ap-translate="SECURITY.IDENTIFICATION_REQ">Identification request</a>
+				</div>
+			</div>
+			<div class="chk_icon"><i class="xi-close-circle"></i></div>
+		</div>
+	</div>
+	<div class="bank_info_wrap">
+		<div class="bank_info_modal">
+			<h4 ap-translate="SECURITY.ADDRESS_MANAGEMENT">Address management</h4>
+			<form action="/security?mode=add" id="bankInfoForm" method="post" enctype="multipart/form-data">
+				<input type="hidden" name="addAccountId" id="addAccountId" value="">
+				<ul>
+					<li>
+						<label for=""><span ap-translate="SECURITY.BANK_NAME">Account name</span><input type="text" name="addBankName" id="addBankName" value="" maxlength="10"></label>
+					</li>
+					<li>
+						<label for=""><span ap-translate="SECURITY.WITHDRAWAL_INFO">Withdrawal address management</span><input type="text" name="addBankAddr" id="addBankAddr" value="" maxlength="25"></label>
+					</li>
+				</ul>
+				<div class="btn_wrap">
+					<a class="btn btn_submit btn_small" onclick="bankInfoSubmit();" ap-translate="SECURITY.ADDRESS_MANAGEMENT">Address management</a>
+					<a class="btn btn_cancel btn_small" onclick="modalClose();" ap-translate="SECURITY.CANCEL">Cancel</a>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+<% include ./layout/footer %>
+
+<script src="js/lib/growl.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.2/TweenMax.min.js"></script>
+<script type="text/babel" src="js/BBscript.js"></script>
+
+<!-- AlphaPoint -->
+<script src="js/config.js"></script>
+<script src="js/library.min.js"></script>
+<script src="js/widgets.min.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+	  $("#phoneCheckBtn").on("click", function(){
+	    window.open("http://bitnaru.co.kr:800/hs_cnfrm_popup1.php", "popup_window", "width=500, height=400, scrollbars=no");
+	    $("#phoneChkForm").submit();
+	  });
+	});
+</script>
+<script type="text/javascript" src="js/yong.js"></script>
+<script type="text/javascript">
+    AlphaPoint.config.templateStyle = 'retail';
+    security();
+    function bankInfoSubmit() {
+    	var bankName = $('#addBankName').val()
+    	var bankAddr = $('#addBankAddr').val()
+    	if (bankName == "") {
+    		alert('은행명을 입력해주세요.')
+    		$('#addBankName').focus();
+    		return false;
+    	}
+    	if (bankAddr == "") {
+    		alert('계좌정보를 입력해주세요.')
+    		$('#addBankAddr').focus();
+    		return false;
+    	}
+    	$('#bankInfoForm').submit();
+    }
+    function modalOpen() {
+    	$('.bank_info_wrap').show();
+    }
+    function modalClose() {
+    	$('.bank_info_wrap').hide();
+    }
+</script>
+<script type="text/javascript">
+	var socket = io();
+	secu_info();    
+</script>
+
+</body>
+</html>

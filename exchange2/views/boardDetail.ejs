@@ -1,0 +1,202 @@
+<% include ./layout/head %>
+
+<link rel='stylesheet' href='/css/board.css' />
+<link rel='stylesheet' href='/css/m_board.css' />
+
+<% include ./layout/header %>
+<% include ./layout/board_navigation %>
+
+
+
+<script>
+    $(function(){
+        var fileUp = '<%=content.fileUp%>';
+        var files = '';
+        var cnt = '';
+        var output = '';
+        if(fileUp != "") {
+            files = fileUp.split(',');
+            cnt = files.length;
+            for (var i = 0; i < cnt; i++) {
+                output += "<button type='button' onclick=downloadFiles('"+files[i].split(':')[0]+"');>";
+                output += "<span id='downloadFile'>" + files[i].split(':')[1] + "</span>";
+                output += "</button>";
+            }
+        } else {
+            output = "파일이 없습니다.";
+        }
+
+        $('.download-file').html(output);
+    });
+
+    function downloadFiles(filepath) {
+        var path = filepath;
+        if(confirm("파일이 다운로드 됩니다.") == true) {
+            location.href = "/notice/download/" + path;
+        }
+    }
+
+    function modifyContents() {
+        // 글 수정 버튼 눌렀을 때 화면 전환 시
+        $('.content_detail').hide();
+        $('.modify_form').show();
+
+        $('.modSubject').val('<%=content.title%>');
+        $('.modWriter').text('<%=content.writer%>');
+        $('.textContents').html('<%=content.contents%>');
+    }
+
+    function checkPW(inputPassword){
+        var result = '';
+
+        $.ajax({
+            url: '/password/?id=<%=content._id%>',
+            async: false,
+            success: function(password) {
+                if(inputPassword == password) result = true;
+                else result = false;
+            }
+        });
+        return result;
+    }
+
+    function modifySubmitContents() {
+        var title = $('#modContentSubject').val();
+        var content = $('#modContents').val();
+        var inputPassword = $('#modContentPassword').val();
+
+        var chkpw = checkPW(inputPassword);
+
+        if(chkpw == true) {
+            if (title == '' || content == '') {
+                alert("제목과 내용 모두 있어야합니다.");
+                return;
+            } else {
+                $('#modifyAction').submit();
+            }
+        } else {
+            alert("글 작성 시 입력한 비밀 번호를 입력해주세요");
+            return;
+        }
+    }
+
+    function cancelForm(option) {
+        if(option == 'modify') {
+            // 수정하다 취소시
+            $('.content_detail').show();
+            $('.modify_form').hide();
+        } else {
+            $('.delete_confirm').hide();
+        }
+
+    }
+    function deleteContents() {
+        $('.delete_confirm').show();
+    }
+
+    function deleteConfirm() {
+        var inputPassword = $('#delPassword').val();
+        var chkpw = checkPW(inputPassword);
+
+        if(chkpw == true) {
+            location.href='/notice/delete?id=<%=content._id%>';
+        } else {
+            alert("글 작성 시 입력한 비밀 번호를 입력해주세요");
+            return;
+        }
+    }
+
+
+    function dateFormatChangeScript(date) {
+        var newdate = new Date(date);
+
+        var options = {
+            weekday: "short", year: "numeric", month: "short"
+        };
+
+        return newdate.toLocaleTimeString("ko-KR", options);
+    }
+</script>
+
+    
+    
+<div id="boardView" class="board_common">
+    <div class="category_list">
+        <ul>
+            <li class="active"><a href="/notice" ap-translate="BALANCES.TAB_ALL">All</a></li>
+            <li id="ca_list01"><a href="/category?ca_name=공지사항" ap-translate="FOOTER.NOTICE">Announcements</a></li>
+            <li id="ca_list02"><a href="/category?ca_name=상장" ap-translate="DASHBOARD.LISTING">Listing</a></li>
+            <li id="ca_list03"><a href="/category?ca_name=이벤트" ap-translate="DASHBOARD.EVENT">Events</a></li>
+        </ul>
+    </div>
+    <div class="view_content">
+        <div class="board_navi">
+                <a href="">고객센터</a> > <a href=""><%=content.writer%></a>
+        </div>
+        <div class="bo_title">
+            <h3><%=content.title%></h3>
+            <p><%=dateFormatChange(content.date)%></p>
+        </div>
+        <div class="bo_content">
+            <%-content.contents%>
+        </div>
+    </div>
+    <!-- delete confirm window -->
+    <div class="btn_wrap">
+        <ul>
+            <li><a href="/write" class="btn btn_small btn_submit lv_hide">글쓰기</a></li>
+            <li><a href="/modify?id=<%=content._id%>" class="btn btn_small btn_modify lv_hide">수정</a></li>
+            <li><a href="#" onclick="delete_modal();" class="btn btn_small btn_delete lv_hide">삭제</a></li>
+            <li><a href="/notice" class="btn btn_small btn_col1">목록</a></li>
+        </ul>
+    </div>
+    <div class="delete_confirm">
+        <p>비밀 번호를 입력하면 글이 삭제됩니다</p>
+        <div>
+            <input type="password" id="delPassword" name="delPassword">
+            <button onclick="deleteConfirm();" class="btn btn_delete btn_small">삭제</button>
+            <button onclick="cancelForm('delete');" class="btn btn_small btn_cancel">취소</button>
+        </div>
+    </div>
+    <!-- end -->
+</div>
+
+<% include ./layout/footer %>
+    
+<script src="/js/lib/growl.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.2/TweenMax.min.js"></script>
+<script type="text/babel" src="js/BBscript.js"></script>
+
+<!-- AlphaPoint -->
+<script src="/js/config.js"></script>
+<script src="/js/library.min.js"></script>
+<script src="/js/widgets.min.js"></script>
+<script type="text/javascript" src="js/yong.js"></script>
+<script type="text/javascript">
+    AlphaPoint.config.templateStyle = 'retail';
+    boardViewChk();
+</script>
+
+<script type="text/javascript">
+    function delete_modal() {
+        $('.delete_confirm').show();
+    }
+</script>
+
+</body>
+</html>
+
+<%
+function dateFormatChange(date) {
+    var d = new Date(date),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+
+    if (month.length < 2) month = '0' + month;
+    if (day.length < 2) day = '0' + day;
+
+    return [year, month, day].join('-');
+}
+%>

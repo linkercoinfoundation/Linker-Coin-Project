@@ -1,0 +1,72 @@
+<footer id="footer">
+    <div class="navi_bar">
+        <div class="container">
+            <ul>
+                <li><a href="/notice" ap-translate="FOOTER.NOTICE">Announcements</a></li>
+                <li><a href="/informationUse" ap-translate="FOOTER.GUIDE">User Guide</a></li>
+                <li><a href="/FeeInformation" ap-translate="FOOTER.FEE">Trading Fee</a></li>
+                <li><a href="/termsOfUse" ap-translate="FOOTER.TERMS">Terms Of Use</a></li>
+                <li><a href="/privacyPolicy" ap-translate="FOOTER.PRIVACY">Privacy Policy</a></li>
+                <li><a href="/faq" ap-translate="FOOTER.FAQ">FAQ</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="foot_content">
+        <div class="container">
+            <h2><a href="./"><img src="/images/bitnaruLogo.png" alt=""></a></h2>
+            <div class="foot_info">
+                <div class="address">
+                    <span><strong ap-translate="FOOTER.ABOUT_TEXT">LinkerKorea Co., Ltd.</strong></span>
+                    <span ap-translate="FOOTER.CEO"><strong>CEO</strong> Jeonggon Mun</span>
+                    <span ap-translate="FOOTER.ADDRESS">10 Gukjegeumyung-ro, Youngdeungpo-gu, Seoul, South Korea</span>
+                    <span ap-translate="FOOTER.FOT_NUM1"><strong>EID</strong> 398-81-01088</span>
+                </div>
+                <div class="cs_center">
+                    <h3 ap-translate="FOOTER.CSCENTER">CS CENTER</h3>
+                    <div class="txt_cont">
+                        <div>
+                            <div class="area" ap-translate="FOOTER.TIME"><strong>Office hours :</strong> Monday to Friday, 10:00 ~ 19:00 (KST) / Office closed on weekends and holidays </div>
+                            <a href="http://pf.kakao.com/_xkxbxbeC/chat" target="_blank"><i class="xi-kakaotalk"></i><span ap-translate="FOOTER.CHAT">24hr Live Chat</span></a>
+                            <!-- <span ap-translate="FOOTER.WORK">Office closed on weekends and holidays</span> -->
+                        </div>
+                        <div>
+                            <div class="area" ap-translate="FOOTER.TEL"><strong>Tel :</strong> +82 2-782-2066</div>
+                            <div class="area"><strong>Email :</strong> <a href="mailto:support@bitnaru.com" title="support@bitnaru.com으로 메일 전송">support@bitnaru.com</a></div>
+
+                            <div class="area">
+                                <strong>SNS :</strong>
+                                <ul>
+                                    <li><a href="https://blog.naver.com/bitnaru_official" target="_blank"><i class="xi-naver-square"></i></a></li>
+                                    <li><a href="https://twitter.com/bitnaru" target="_blank"><i class="xi-twitter"></i></a></li>
+                                    <li><a href="https://www.facebook.com/Bitnaru/" target="_blank"><i class="xi-facebook"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="copyright">
+                    <p>Copyright 2018 LinkerKorea Co., Ltd. All Rights Reserved.</p>
+                </div>                
+            </div>
+        </div>
+    </div>
+</footer>
+<div id="scrTop" class="visible_off">
+    <button onclick="scrTop();"><i class="xi-caret-up"></i></button>
+</div>
+</div>
+
+<script type="text/javascript">
+    $(window).on('scroll', function() {
+        var wins = $(window).scrollTop();
+        if (wins > 300) {
+            $('#scrTop').removeClass('visible_off').addClass('visible_on');
+        } else {
+            $('#scrTop').removeClass('visible_on').addClass('visible_off');
+        }
+    })
+    function scrTop() {
+        $('html, body').animate({ scrollTop: 0}, 300);
+        return false;
+    }
+</script>

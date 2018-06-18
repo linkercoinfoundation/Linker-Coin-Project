@@ -1,0 +1,118 @@
+<% include ./layout/head %>
+
+<link rel='stylesheet' href='/css/board.css' />
+<link rel='stylesheet' href='/css/m_board.css' />
+
+<% include ./layout/header %>
+<% include ./layout/board_navigation %>
+
+<div id="fee">
+	<h2 ap-translate="FEEINFORMATION.FEE_TIT">Trading fee instruction for BitNaru</h2>
+	<div class="trade_fee">
+		<h3 ap-translate="FEEINFORMATION.FEE_TIT01">1. Transaction Fee</h3>
+		<p ap-translate="FEEINFORMATION.FEE_CON01">For all BitNaru users, -0.01% and 0.1% for Maker and Taker fees will be applied respectively.</p>
+		<table>
+			<tr>
+				<th></th>
+				<th>Maker</th>
+				<th>Taker</th>
+			</tr>
+			<tr>
+				<td ap-translate="FEEINFORMATION.ALL_LEVEL">All level</td>
+				<td>-0.01%</td>
+				<td>0.1%</td>
+			</tr>
+		</table>
+		<p ap-translate="FEEINFORMATION.FEE_CON02">Equal fees will be applied for all cryptocurrencies within BitNaru exchange.</p>
+		<dl>
+			<dt ap-translate="FEEINFORMATION.WHAT01">What is Maker?</dt>
+			<dd ap-translate="FEEINFORMATION.MAKER_CON">
+				Maker is a user who increases the size of the order book by making non-immediate buying/selling orders. For example, when Bitcoin costs 8,000,000 KRW and a person wants to make order 10,000 KRW less than the price, this is called Making order and the person is Maker.
+			</dd>
+		</dl>
+		<dl>
+			<dt ap-translate="FEEINFORMATION.WHAT02">What is Taker?</dt>
+			<dd ap-translate="FEEINFORMATION.TAKER_CON">
+				Taker is a user who decreases the size of the order book by making instant buying/selling orders. For example, when Bitcoin selling order exists at 8,000,000 KRW, a user makes instant buying order(Taking order) at that price and the user is called Taker.
+			</dd>
+		</dl>
+	</div>
+	<div class="withdraw_fee">
+		<h3 ap-translate="FEEINFORMATION.FEE_TIT02">2. Withdrawal fee</h3>
+		<table>
+			<thead>
+				<tr>
+					<th ap-translate="FEEINFORMATION.FEE_TXT01">Currency</th>
+					<th ap-translate="FEEINFORMATION.FEE_TXT02">Withdrawal fee</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>KRW</td>
+					<td>5,000 KRW</td>
+				</tr>
+				<tr>
+					<td>BTC</td>
+					<td>0.001 BTC</td>
+				</tr>
+				<tr>
+					<td>BCH</td>
+					<td>0.003 BCH</td>
+				</tr>
+				<tr>
+					<td>ETH</td>
+					<td>0.01 ETH</td>
+				</tr>
+				<tr>
+					<td>ETC</td>
+					<td>0.5 ETC</td>
+				</tr>
+				<tr>
+					<td>XRP</td>
+					<td>10 XRP</td>
+				</tr>
+				<tr>
+					<td>LTC</td>
+					<td>0.05 LTC</td>
+				</tr>
+				<tr>
+					<td>LNC</td>
+					<td>100 LNC</td>
+				</tr>
+				<tr>
+					<td>TrueUSD</td>
+					<td>10 TUSD</td>
+				</tr>
+				<tr>
+					<td>Aeron</td>
+					<td>10 ARN</td>
+				</tr>
+				<tr>
+					<td>TrueChain</td>
+					<td>10 TRUE</td>
+				</tr>
+			</tbody>
+		</table>
+		<p ap-translate="FEEINFORMATION.FEE_TXT03">Withdrawal fee is applied at flat rate per transaction. There is no deposit fee.</p>
+	</div>
+</div>
+
+
+<script src="js/lib/growl.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.2/TweenMax.min.js"></script>
+<script type="text/babel" src="js/BBscript.js"></script>
+
+<!-- AlphaPoint -->
+<script src="js/config.js"></script>
+<script src="js/library.min.js"></script>
+<script src="js/widgets.min.js"></script>
+<script type="text/javascript">
+    AlphaPoint.config.templateStyle = 'retail';
+</script>
+
+<% include ./layout/footer %>
+
+
+</body>
+</html>

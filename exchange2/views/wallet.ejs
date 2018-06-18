@@ -1,0 +1,191 @@
+<% include ./layout/head %>
+<% include ./layout/header %>
+
+<link rel="stylesheet" type="text/css" href="/css/wallet.css">
+<link rel="stylesheet" type="text/css" href="/css/m_wallet.css">
+
+
+<div ap-widget="LoginRequired"></div>
+
+<div id="wallet" class="wallet_wrap">
+    <div class="container">
+        <div class="page_link">
+            <ul>
+                <li class="active"><a href="/wallet" ap-translate="WALLET.DEPOSIT">Deposit, Withdrawal</a></li>
+                <li><a href="/transactionDetails" ap-translate="WALLET.ORDERS">Orders</a></li>
+            </ul>
+        </div>
+        <div class="wallet_info">
+            <h3><span class="idChk">닉네임</span><span ap-translate="WALLET.TOTAL_ASSET">Total Asset</span><strong id="balanceTxt">0</strong><span class="krw"> KRW</span></h3>
+
+            
+            <div class="wallet_info2">
+                <h5><span ap-translate="WALLET.NOTICE_TXT1"> [Notice] Due to the check of some coin's wallet system. <br> deposit/withdrawal may not be used for these coins </span></h5>
+            </div> 
+            
+        </div>
+        
+        
+        <div class="asset_balance">
+            <div class="ap-balances" ap-widget='Balances' hide-header="false"></div>
+        </div>
+    </div>
+</div>
+<input type="hidden" id="userFullName">
+<input type="hidden" id="bankNameVal">
+<input type="hidden" id="bankAddrVal">
+
+<div ap-widget="TickerScrolling" class="ticker-scrolling" style="height: 0; overflow: hidden;"></div>
+
+
+  <% include ./layout/footer %>
+  
+  <script src="/js/lib/growl.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.2/TweenMax.min.js"></script>
+  <script type="text/babel" src="js/BBscript.js"></script>
+
+  <!-- AlphaPoint -->
+  <script src="/js/config.js"></script>
+  <script src="/js/library.min.js"></script>
+  <script src="/js/widgets.min.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
+  <script type="text/javascript">
+    var socket = io();
+  </script>
+  <script type="text/javascript" src="js/yong.js"></script>
+  <script type="text/javascript">
+      AlphaPoint.config.templateStyle = 'retail'
+      coinicon();
+  </script>
+
+  <script type="text/javascript">
+    function coninNamechg(){
+        var lang = $.cookie('lang');
+        if (lang == "en") {
+        $('.currency_01').text('KRW');
+        $('.currency_02').text('Bitcoin');
+        $('.currency_03').text('Ethereum');
+        $('.currency_04').text('Bitcoin Cash');
+        $('.currency_05').text('Ethereum Classic');
+        $('.currency_06').text('Ripple');
+        $('.currency_07').text('Litecoin');
+        $('.currency_08').text('Linkercoin');
+        $('.currency_09').text('TrueUSD');
+        $('.currency_010').text('Aeron');
+        $('.currency_011').text('Truechain');
+        }
+    }
+
+    var coinName = setInterval(function() {
+        coninNamechg();
+        clearInterval(coinName);
+    }, 500)
+
+    var userChk = setInterval(function() {
+        AlphaPoint.getUser.subscribe(function(e){
+            var email_chk = e.EmailVerified;
+            var use2fa = e.Use2FA;
+            if (email_chk == false) {
+                $('.deposit1').remove();
+                $('.withbtn1').remove();
+            }
+            if (use2fa == false) {
+                $('.withdraw-button').remove();
+            }
+            if (email_chk || use2fa) {
+                clearInterval(userChk);
+            }
+        });
+    }, 500)
+    var accountChk = setInterval(function() {
+        AlphaPoint.accountInfo.subscribe(function(e){
+            var lev = e.VerificationLevel;
+            var lang = $.cookie('lang');
+            if (lev < 3) {
+                $('.deposit1').remove();
+                $('.withbtn1').remove();
+                if (lang == "en") {
+                    $('.verify_txt1').text('Bank account verification must be completed')
+                } else {
+                    $('.verify_txt1').text('계좌 인증 완료 후 이용 가능 합니다.')                  
+                }
+            }
+            $('.balances_12').remove(); 
+            $('.balances_13').remove(); 
+            $('.balances_14').remove(); 
+            $('.balances_15').remove(); 
+            
+            if (lev) {
+                clearInterval(accountChk);
+            }
+        });
+    }, 500)
+
+    var userName = setInterval(function() {
+        AlphaPoint.getUser.subscribe(function(e){
+            var id_value = e.AccountId;
+            if (id_value) {
+                socket.emit('verifit', id_value);
+                socket.emit('bankInfo', id_value);
+                clearInterval(userName);
+            }
+        });     
+    }, 500);
+    socket.on('verifit', function(cont){
+        var phoneChk = setInterval(function() {
+            if (cont) {
+                AlphaPoint.getUser.subscribe(function(e){
+                    var id_value = e.AccountId;
+                    if (cont.accountId == id_value) {
+                        $('#userFullName').val(cont.fullname);
+                        clearInterval(phoneChk);
+                    }
+                });
+            }
+        }, 300)
+    });
+
+    socket.on('bankInfo', function(content){
+        var bankChk = setInterval(function() {
+            if (content) {
+                AlphaPoint.getUser.subscribe(function(e){
+                    var id_value = e.AccountId;
+                    if (content.accountId == id_value) {
+                        $('#bankNameVal').val(content.bankName);
+                        $('#bankAddrVal').val(content.bankAddr);
+                        clearInterval(bankChk);
+                        socket.close();
+                    }
+                });
+            }
+        }, 400)
+    });
+
+  </script>
+    <script type="text/javascript">
+        $('#logoutBtn').on('click', function() {
+            setTimeout(function() {
+                window.location.replace("./"); 
+            }, 500)
+        })
+    </script>
+    <script type="text/javascript">
+    $(window).load(function() {
+        var test = setInterval(function() {
+            AlphaPoint.getUser.subscribe(function(e){
+                var id_value = e.AccountId;
+                if (id_value == 863 || id_value == 66 || id_value == 190 || id_value == 16 || id_value == 72 || id_value == 182 || id_value == 19 || id_value == 1327 ) {
+                    $('#wallet .ap-balances .balances_list .balances_btn .withbtn1').show();
+                    $('#wallet .ap-balances .balances_list .balances_btn .deposit1').show();
+
+                    clearInterval(test);
+                }
+            })
+        }, 300)
+    })
+    </script>
+
+
+</body>
+</html>

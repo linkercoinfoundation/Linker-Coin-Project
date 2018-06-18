@@ -1,0 +1,26 @@
+
+
+<div class="page_list">
+    <ul>
+        <li><a href="/notice" ap-translate="FOOTER.NOTICE">Announcements</a></li>
+        <li><a href="/informationUse" ap-translate="FOOTER.GUIDE">User Guide</a></li>
+        <li><a href="/FeeInformation" ap-translate="FOOTER.FEE">Trading Fee</a></li>
+        <li><a href="/termsOfUse" ap-translate="FOOTER.TERMS">Terms of Use</a></li>
+        <li><a href="/privacyPolicy" ap-translate="FOOTER.PRIVACY_TEXT">Privacy Policy</a></li>
+        <li><a href="/faq" ap-translate="FOOTER.FAQ">FAQ</a></li>
+    </ul>
+</div>
+
+<script type="text/javascript">
+	var aa = location.pathname;
+	$(".page_list ul li").each(function(index, item){
+		var ss = $(this).find('a').attr('href');
+		if (aa == ss ) {
+			$(this).addClass('active');
+			$(this).find('a').css({
+				color: "#003366",
+				"font-weight": 900
+			})
+		}
+	})
+</script>

@@ -1,0 +1,31 @@
+<% include ./layout/head %>
+<% include ./layout/header %>
+
+<div id="errorMsg">
+	<h2><%= error.status %> Page <%= message %></h2>
+	
+	<p>페이지가 존재하지 않거나, 일시적인 문제로 표시하지 못했습니다.</p>
+	<p>정상적인 주소로 접속한 경우, 새로고침해보세요.</p>
+	<div class="btn_wrap">
+		<a href="./" class="btn btn_submit btn_long">메인페이지로 이동</a>
+		<a href="" class="btn btn_cancel btn_long">새로고침</a>
+	</div>
+</div>
+
+<% include ./layout/footer %>
+
+<script src="js/lib/growl.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.2/TweenMax.min.js"></script>
+<script type="text/babel" src="js/BBscript.js"></script>
+
+<!-- AlphaPoint -->
+<script src="js/config.js"></script>
+<script src="js/library.min.js"></script>
+<script src="js/widgets.min.js"></script>
+<script type="text/javascript">
+    AlphaPoint.config.templateStyle = 'retail'
+</script>
+	
+</body>
+</html>

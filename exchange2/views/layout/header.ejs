@@ -1,0 +1,70 @@
+<div id="wrap">
+<!-- Header -->
+<header id="header">
+    <div id="headFixed" class="scr_off">
+        <div id="mHeader">
+            <h1 id="mobileLogo"><a href="./"><img src="/images/bitnaruLogo.png" alt="비트나루"></a></h1>
+            <button id="m_menuBtn"><i class="xi-bars"></i></button>
+        </div>
+        <div class="container">
+            <h1 id="logo"><a href="./"><img src="/images/bitnaruLogo.png" alt="비트나루"></a></h1>
+            <div class="menu">
+                <ul>
+                    <li><a href="/exchange" ap-translate="HEADER.EXCHANGE">Exchange</a></li>
+                    <li class="show-loggedin"><a href="/wallet" ap-translate="HEADER.WALLET">Wallet</a></li>
+                    <li><a href="/notice" ap-translate="HEADER.CUSTOMER">Customer Service</a></li>
+                </ul>
+            </div>
+            <div class="account_navi">
+                <ul class="show-loggedout">
+                    <li><a href="#login" class="modal-btn login-btn" ap-translate="SIGNIN_MODAL.TITLE_TEXT">Log in</a></li>
+                    <li><a href="#signup" class="modal-btn register-btn" ap-translate="SIGNUP_MODAL.TITLE_TEXT">Sign up</a></li>
+                </ul>
+                <ul class="show-loggedin">
+                    <li><a href="/myPage" title="회원정보" ap-translate="HEADER.MYPAGE">My page</a></li>
+                    <li id="logoutBtn"><a ap-action="Logout" href="./" name="logout" title="로그아웃" ap-translate="SIDEBAR.MENU_LOGOUT">Sign Out</a></li>
+                </ul>
+            </div>
+            <div class="lang_navi">
+                <p class="lang_kr"><span>Language <i class="xi-caret-down-min"></i></span></p>
+                <ul id="langSelect" class="lang_off">
+                    <li class="lang_kr" data-lang="kr">한국어</li>
+                    <li class="lang_en" data-lang="en">ENGLISH</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- Header End -->
+
+<div id="loginModalWrap" class="login-modal sign_modal">
+    <div class="modal_content">
+        <span class="close-m close-login xi-close"></span>
+        <div ap-widget="LoginForm" to='index.html' hideCancelBtn="true"></div>
+    </div>
+</div>
+
+<div id="registerModalWrap" class="register-modal sign_modal">
+    <div class="modal_content">
+        <span class="close-m close-register xi-close"></span>
+        <div ap-widget="RegisterForm" hideCancelBtn="true"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $('#m_menuBtn').on('click', function() {
+        if ($(this).hasClass('menu_on')) {
+            $('#header .container').css({
+                right: "-200px"
+            })
+            $(this).find('i').removeClass('xi-close').addClass('xi-bars');
+            $(this).removeClass('menu_on')
+        } else {
+            $('#header .container').css({
+                right: 0
+            })
+            $(this).find('i').removeClass('xi-bars').addClass('xi-close');
+            $(this).addClass('menu_on')            
+        }
+    })
+</script>

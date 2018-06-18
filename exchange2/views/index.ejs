@@ -1,0 +1,245 @@
+<% include ./layout/head %>
+<% include ./layout/popup %>
+    
+<!--[if lt IE 7]>
+    <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
+
+<% include ./layout/header %>
+
+
+<div id="eventPopup">
+    <div class="img_wrap">
+        <a href="/view?id=5b0eaf533f4ac703dccc5e22"><img src="./images/popup/pop1.jpg" alt=""></a>
+    </div>
+    <div class="btn_wrap">
+        <label id="todayHide_chk"><input type="checkbox" id="eventTodayHide"><span>오늘 하루동안 열지 않습니다.</span></label>
+        <button onclick="eventPopClose();" class="btn btn_submit btn_small">닫기</button>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        // cookie 확인 후 팝업 생성
+        if ($.cookie('eventPop') == 'hidden'){
+            $('#eventPopup').hide();
+        } else if ($.cookie('eventPop') != 'hidden') {
+            $('#eventPopup').show();
+        }
+    });
+    function eventPopClose() {
+        var tchk = $('#eventTodayHide').is(':checked');
+        if (tchk == true) {
+            $.cookie('eventPop', 'hidden', {expires : 1});
+        }
+        $('#eventPopup').remove();
+    }    
+</script>
+
+
+    <!-- Home -->
+    <div id="mainVisual" class="section">
+        <div class="container">
+            <div class="login_wrap">
+                <div class="visual_txt">
+                    <h3>BLOCKCHAIN OF FINANCE</h3>
+                    <p ap-translate="INDEX.TITLE_TEXT"><span style="font-size:1.2rem">Global Exchange to Link Digitalized Asset</span></p>
+                </div>
+                <div class="login_cont show-loggedout" ap-widget="LoginForm" to='./' hide-header hideCancelBtn="true"></div>
+                <div class="exchange_btn show-loggedin">
+                    <a href="exchange" class="link_btn"><span ap-translate="INDEX.BROWSE">Browse exchange</span></a>
+                </div>
+                <div class="account_btn show-loggedin">
+                    <ul>
+                        <li><a href="/security" ap-translate="INDEX.SECURITY_SETTIONGS">Security Settings</a></li>
+                        <li><a href="/myPage" ap-translate="INDEX.MY_PAGE">My Page</a></li>
+                    </ul>
+                </div>
+            </div>
+            <!-- <div class="coin_list">
+                <div id="coinStatus">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th class="product" ap-translate="INDEX.NAME">Name</th>
+                                <th class="lastpx" ap-translate="INDEX.PRICE">Price</th>
+                                <th class="volume" ap-translate="INDEX.VOLUME">Volume</th>
+                                <th class="pxchange" ap-translate="INDEX.PXCHANGE">24hr Chg%</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% for(var i=1; i < 7; i++) { %>
+                            <tr class="list<%=i%>"></tr>
+                            <% } %>
+                        </tbody>
+                    </table>
+                </div>
+            </div> -->
+        </div>
+    </div>
+    <!-- Home End -->
+    <div id="content">
+        <div id="infoSection">
+            <div class="container">
+                <div class="exchange_view">
+                    <h3><a href="/notice" ap-translate="INDEX.OPEN_TXT">BitNaru exchange is Launched</a></h3>
+                    <div class="info_btn">
+                        <ul>
+                            <!-- <li><a href="/exchange" ap-translate="INDEX.EXPLORE" class="link_btn">Explore exchange</a></li>
+                            <li class="use_guide"><a href="/informationUse"><i class="xi-help-o"></i><span ap-translate="INDEX.INFORMATION_USE">Information Use</span></a></li>
+                            <li class="security_guide"><a href="/security"><i class="xi-security"></i><span ap-translate="INDEX.INFORMATION_SECURITY">Information Security</span></a></li> -->
+                            <li><a href="/exchange" ap-translate="INDEX.EXPLORE" class="link_btn">Explore Exchange</a></li>
+                            <li class="use_guide"><a href="/notice"><span ap-translate="FOOTER.NOTICE">Announcements</span></a></li>
+                            <li class="security_guide"><a href="/informationUse"><i class="xi-help-o"></i><span ap-translate="INDEX.INFORMATION_USE">User Guide</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="security_level">
+            <h3><i class="xi-warning"></i><span ap-translate="INDEX.OTP">Activate OTP verification for your security.</span></h3>
+            <div ap-wrapper="UserInfo">
+                <a href="#" title="profile"><span class="menu-item-parent" ap-translate="INDEX.ACCOUNT_SETTING">Account Settings</span></a>
+            </div>
+        </div>
+        <div id="exchangeInfo">
+            <div class="container">
+                <div>
+                    <span class="thumb"><img src="images/thumb/bitnaru_info_thum01.png" alt=""></span>
+                    <div class="txt_cont">
+                        <dl>
+                            <dt ap-translate="INDEX.EXCHANGE1_TIT"><strong>A multi-platform exchange enables you to trade with international fiat currencies</strong></dt>
+                            <dd ap-translate="INDEX.EXCHANGE1_TXT">Global exchange for more than 200 different fiat currencies</dd>
+                        </dl>
+                    </div>
+                </div>
+                <div>
+                    <span class="thumb"><img src="images/thumb/bitnaru_info_thum02.png" alt=""></span>
+                    <div class="txt_cont">
+                        <dl>
+                            <dt ap-translate="INDEX.EXCHANGE2_TIT"><strong>Advanced Market-making Technology by Financial Engineering</strong></dt>
+                            <dd ap-translate="INDEX.EXCHANGE2_TXT">Enhance trading efficiency and security based on financial specialists.</dd>
+                        </dl>
+                    </div>
+                </div>
+                <div>
+                    <span class="thumb"><img src="images/thumb/bitnaru_info_thum03.png" alt=""></span>
+                    <div class="txt_cont">
+                        <dl>
+                            <dt ap-translate="INDEX.EXCHANGE3_TIT"><strong>Easy trading for Beginners</strong></dt>
+                            <dd ap-translate="INDEX.EXCHANGE3_TXT">Designed easy trading platform for cryptocurrency beginner.</dd>
+                        </dl>
+                    </div>
+                </div>
+                <div>
+                    <span class="thumb"><img src="images/thumb/bitnaru_info_thum04.png" alt=""></span>
+                    <div class="txt_cont">
+                        <dl>
+                            <dt ap-translate="INDEX.EXCHANGE4_TIT"><strong>Advanced trading Orders for experts</strong></dt>
+                            <dd ap-translate="INDEX.EXCHANGE4_TXT">Provides more than 20 professional trading order types: Market, Limit, Stop Limit, IOC and etc.</dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="features" class="section">
+            <div class="grid_wrap">
+                <div class="grid_item">
+                   <span>01</span>
+                    <h4 ap-translate="INDEX.INFO1_TIT">Listing all kinds of cryptocurrencies</h4>
+                    <p ap-translate="INDEX.INFO1_TXT">Strictly chosen cryptocurrencies will be listed without consideration of technical limit whether it is public or private blockchain.</p>
+                </div>
+                <div class="grid_item">
+                   <span>02</span>
+                    <h4 ap-translate="INDEX.INFO2_TIT">Able to handle one million transaction per second</h4>
+                    <p ap-translate="INDEX.INFO2_TXT">Based on the advanced matching order system, BitNaru can process more than a million transactions per second.</p>
+                </div>
+                <div class="grid_item">
+                   <span>03</span>
+                    <h4 ap-translate="INDEX.INFO3_TIT">Regularly examine security on exchange</h4>
+                    <p ap-translate="INDEX.INFO3_TXT">Provides a regular security check by independent security company to ensure your cryptocurrencies from hacking.</p>
+                </div>
+                <div class="grid_item">
+                   <span>04</span>
+                    <h4 ap-translate="INDEX.INFO4_TIT">Enhanced security system through the firewall between each level of administration</h4>
+                    <p ap-translate="INDEX.INFO4_TXT">Encrypted information such as customer information is secured by multiple stages. Between each administration stage, firewall prevents from the third-party damage.</p>
+                </div>
+            </div>
+        </div>
+        <div ap-widget="TickerScrolling" class="ticker-scrolling" style="height: 0; overflow: hidden;"></div>
+    </div>
+
+<!-- End Main -->
+
+
+<div id="emailVerChk">
+    <div class="modal_inner">
+        <button onClick="emailVerChkClose();"><i class="xi-close"></i></button>
+        <h3><i class="xi-error"></i><span ap-translate="INDEX.EMAIL_VERIFY">Email Authentication</span></h3>
+        <p ap-translate="INDEX.EMAIL_VERIFY_TEXT">Please check your email and complete your email authentication</p>
+        <p></p>
+    </div>
+</div>
+
+
+<% include ./layout/footer %>
+
+
+<div id="widget-modal" class="widget-modal">
+    <span class="close-m close-widget"></span>
+    <div class="widget-modal-container">
+
+        <div id="VerifyEmail" ap-widget="VerifyEmailV2" class="hide" hide-header hideCancelBtn="true">
+            <div class="ap-form-test"></div>
+        </div>
+
+        <div id="ResetPassword" ap-widget="ResetPasswordV2" class="hide" hide-header hideCancelBtn="true">
+            <div class="ap-form-test"></div>
+        </div>
+
+        <div id="ConfirmWithdraw" ap-widget="ConfirmWithdrawV2" class="hide" hide-header hideCancelBtn="true">
+            <div class="ap-form-test"></div>
+        </div>
+        
+    </div>
+</div>
+    
+    
+    
+<script src="js/lib/growl.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.2/TweenMax.min.js"></script>
+<script type="text/babel" src="js/BBscript.js"></script>
+
+<!-- AlphaPoint -->
+<script src="js/config.js"></script>
+<script src="js/library.min.js"></script>
+<script src="js/widgets.min.js"></script>
+
+
+
+<script type="text/javascript" src="js/yong.js"></script>
+<script type="text/javascript">
+    AlphaPoint.config.templateStyle = 'retail'
+    coinState();
+</script>
+<script type="text/javascript">
+    var verChk = setInterval(function(){
+        AlphaPoint.getUser.subscribe(function(e){
+            var emailver = e.EmailVerified;
+            if (emailver == false) {
+                $('#emailVerChk').show();
+                clearInterval(verChk);
+            } else if (emailver == true) {
+                $('#emailVerChk').remove();
+                clearInterval(verChk);
+            }
+        })
+    }, 500);
+    function emailVerChkClose() {
+        $('#emailVerChk').remove();
+    }
+</script>
+
+</body>
+</html>

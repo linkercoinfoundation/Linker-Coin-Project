@@ -1,0 +1,127 @@
+<% include ./layout/head %>
+
+<link rel='stylesheet' href='/css/board.css' />
+<script type="text/javascript" src="/library/smarteditor/js/service/HuskyEZCreator.js" charset="utf-8"></script>
+
+<% include ./layout/header %>
+<% include ./layout/board_navigation %>
+
+
+<div id="boardWrite" class="board_common">
+    <!-- new content write form-->
+    <div class="write_form">
+        <form id="writeAction" action="/notice?mode=add" method="post" enctype="multipart/form-data">
+            <div class="ca_select">
+                <select class="inputWriter" id="addContentWriter" name="addContentWriter">
+                    <option value="공지사항">공지사항</option>
+                    <option value="상장">상장</option>
+                    <option value="이벤트">이벤트</option>
+                </select>
+            </div>
+            <ul class="frm_info">
+                <li>
+                    <input type="text" class="inputSubject" id="addContentSubject" name="addContentSubject" placeholder="제목">
+                </li>
+                <li>
+                    <input type="password" class="inputPassword" id="addContentPassword" name="addContentPassword" placeholder="비밀번호">
+                </li>
+            </ul>
+            <div class="frm_cont">
+                <textarea class="textContetns" name="addContents" id="addContents" rows="10" cols="100" style="width:766px; height:412px; display:none;"></textarea>
+            </div>
+            <div class="frm_file">
+                <input type="hidden" class="inputFile" id = "UploadFile" name = "UploadFile" multiple>
+            </div>
+        </form>
+        <div id="new" class="btn_wrap">
+            <ul>
+                <li>
+                    <a onclick="submitContents();" class="btn btn_submit btn_medium">작성</a>
+                </li>
+                <li>
+                    <a href="javascript:history.go(-1);" class="btn btn_cancel btn_medium">취소</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- write form end-->
+</div>
+
+
+<% include ./layout/footer %>
+    
+    
+<script src="js/lib/growl.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.2/TweenMax.min.js"></script>
+<script type="text/babel" src="js/BBscript.js"></script>
+
+<!-- AlphaPoint -->
+<script src="js/config.js"></script>
+<script src="js/library.min.js"></script>
+<script src="js/widgets.min.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script type="text/javascript" src="js/yong.js"></script>
+<script type="text/javascript">
+    AlphaPoint.config.templateStyle = 'retail';
+    boardLevChk();
+</script>
+
+
+<script type="text/javascript">
+var oEditors = [];
+
+var sLang = "ko_KR";
+
+nhn.husky.EZCreator.createInIFrame({
+    oAppRef: oEditors,
+    elPlaceHolder: "addContents",
+    sSkinURI: "/library/smarteditor/SmartEditor2Skin.html",  
+    htParams : {
+        bUseToolbar : true,             
+        bUseVerticalResizer : true,     
+        bUseModeChanger : true,         
+        fOnBeforeUnload : function(){
+        },
+        I18N_LOCALE : sLang
+    }, 
+    fOnAppLoad : function(){
+    },
+    fCreator: "createSEditor2"
+});
+
+function pasteHTML() {
+    var sHTML = "<span style='color:#FF0000;'>이미지도 같은 방식으로 삽입합니다.<\/span>";
+    oEditors.getById["addContents"].exec("PASTE_HTML", [sHTML]);
+}
+
+function showHTML() {
+    var sHTML = oEditors.getById["addContents"].getIR();
+    alert(sHTML);
+}
+
+function submitContents(elClickedObj) {
+    oEditors.getById["addContents"].exec("UPDATE_CONTENTS_FIELD", []);
+    var title = $('#addContentSubject').val();
+    var content = $('#addContents').val();
+    var writer = $('#addContentWriter').val();
+    var password = $('#addContentPassword').val();
+
+    if(title == '' || content == '' || writer == '' || password == '') {
+        alert("제목과 내용, 작성자 비밀번호 모두 있어야합니다.");
+        return;
+    } else {
+        $('#writeAction').submit();
+    }
+}
+
+function setDefaultFont() {
+    var sDefaultFont = '궁서';
+    var nFontSize = 24;
+    oEditors.getById["addContents"].setDefaultFont(sDefaultFont, nFontSize);
+}
+</script>
+
+
+</body>
+</html>

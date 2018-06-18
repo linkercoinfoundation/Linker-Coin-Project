@@ -1,0 +1,224 @@
+<% include ./layout/head %>
+
+<link rel='stylesheet' href='/css/board.css' />
+<link rel='stylesheet' href='/css/m_board.css' />
+
+<% include ./layout/header %>
+<% include ./layout/board_navigation %>
+
+<div id="infoUse">
+	<h2 ap-translate="INFO_USE.INFOUSE_TIT">User Guide at BitNaru Exchange</h2>
+	<div class="maket">
+		<h3 ap-translate="INFO_USE.MARKET_TIT">1.   Market Classification</h3>
+		<dl>
+			<dt ap-translate="INFO_USE.MARKET_CON01">KRW Market : </dt>
+			<dd ap-translate="INFO_USE.MARKET_CON02">Cryptocurrencies tradable with Korean Won (KRW)</dd>
+		</dl>
+		<dl>
+			<dt ap-translate="INFO_USE.MARKET_CON03">BTC Market : </dt>
+			<dd ap-translate="INFO_USE.MARKET_CON04">
+				Other cryptocurrencies tradable with Bitcoin(BTC)<br/>
+				-       Trading price for cryptocurrency is determined with BTC standard and converted price for KRW is indicated for reference purposes<br/>
+				(i.e BTC standard price times current price of BTC/KRW)
+			</dd>
+		</dl>
+		<dl>
+			<dt ap-translate="INFO_USE.MARKET_CON05">TUSD Market : </dt>
+			<dd ap-translate="INFO_USE.MARKET_CON06">
+				Other cryptocurrencies tradable with True USD(TUSD)<br/>
+				-       Trading price for cryptocurrency is determined with TUSD standard and converted price for KRW is indicated for reference purposes<br/>
+				(i.e TUSD standard price times current price of TUSD/KRW)
+			</dd>
+		</dl>
+	</div>
+	<div class="trade_data">
+		<h3 ap-translate="INFO_USE.DATA_TIT">2. Data Standard for Daily Transaction</h3>
+		<p ap-translate="INFO_USE.DATA_CON">At BitNaru exchange, transaction amount is calculated based on transaction amount during the last 24 hours of trade.</p>
+	</div>
+	<!-- <div class="order_price">
+		<h3>3. 최소 주문 가능 금액</h3>
+		<table>
+			<tr>
+				<th ap-translate="INFO_USE.ORDER_PRICE_KRW">KRW Market</th>
+				<th ap-translate="INFO_USE.ORDER_PRICE_BTC">BTC Market</th>
+			</tr>
+			<tr>
+				<td>500 KRW</td>
+				<td>0.0005 BTC</td>
+			</tr>
+		</table>
+	</div> -->
+	<div class="order_type">
+		<h3 ap-translate="INFO_USE.ORDER_TYPE_TIT">3. Order Category</h3>
+		<dl>
+			<dt ap-translate="INFO_USE.ORDER_TYPE01">Fixed Price Order : </dt>
+			<dd ap-translate="INFO_USE.ORDER_TYPE01_CON">
+                 Fixed price order is used when price is valued more than trade that is made on the trade contract. Hence when order is made after price is decided, that order is not made above the fixed buying price nor below the fixed selling price.
+                 (Orders that are not made yet get maintained until BTC and KRW market orders are manually cancelled)
+
+            </dd>
+		</dl>
+		<dl>
+			<dt ap-translate="INFO_USE.ORDER_TYPE02">Market Price Order : </dt>
+			<dd ap-translate="INFO_USE.ORDER_TYPE02_CON">
+				Market price order is made at the advantaged level when quantity orders are made. It is used for fast and convenient trade.
+			</dd>
+		</dl>
+	</div>
+	<!-- <div class="quantity">
+		<h3 ap-translate="INFO_USE.STANDARD">5.    Standard for Asking Price</h3>
+		<div>
+			<h5 ap-translate="INFO_USE.STANDARD_COIN">KRW Market (Categorized by the price of coin)</h5>
+			<table>
+				<thead>
+					<tr>
+						<th>코인 1개 가격</th>
+						<th ap-translate="INFO_USE.PRICE_STANDARD">Asking Price Standard</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>2,000,000원 이상</td>
+						<td>1,000원</td>
+					</tr>
+					<tr>
+						<td>1,000,000원 이상 ~ 2,000,000원 미만</td>
+						<td>500원</td>
+					</tr>
+					<tr>
+						<td>500,000원 이상 ~ 1,000,000원 미만</td>
+						<td>100원</td>
+					</tr>
+					<tr>
+						<td>100,000원 이상 ~ 500,000원 미만</td>
+						<td>50원</td>
+					</tr>
+					<tr>
+						<td>10,000원 이상 ~ 100,000원 미만</td>
+						<td>10원</td>
+					</tr>
+					<tr>
+						<td>1,000원 이상 ~ 10,000원 미만</td>
+						<td>5원</td>
+					</tr>
+					<tr>
+						<td>1,000원 미만</td>
+						<td>1원</td>
+					</tr>
+					<tr>
+						<td>100원 미만</td>
+						<td>0.1원</td>
+					</tr>
+					<tr>
+						<td>10원 미만</td>
+						<td>0.01원</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div>
+			<h5 ap-translate="INFO_USE.ORDER_PRICE_BTC">BTC Market</h5>
+			<table>
+				<thead>
+					<tr>
+						<th ap-translate="INFO_USE.MARKET">Market</th>
+						<th ap-translate="INFO_USE.PRICE_STANDARD">Asking Price Standard</th>
+					</tr>
+				</thead>
+				<tbody>
+					<td ap-translate="INFO_USE.ORDER_PRICE_BTC">BTC Market</td>
+					<td>0.00000001 BTC</td>
+				</tbody>
+			</table>
+		</div>
+	</div> -->
+	<div class="withdraw_limit">
+		<h3 ap-translate="INFO_USE.LIMIT">4. Withdrawal Limit</h3>
+		<div>
+			<p ap-translate="INFO_USE.LIMIT01">Daily Withdrawal Limit on Security Level</p>
+			<a href="/security" class="link_more btn btn_long" ap-translate="INFO_USE.LIMIT02"><i class="xi-security"></i>Check my security level</a>
+		</div>
+		<table>
+			<thead>
+				<tr>
+					<th colspan="3" ap-translate="INFO_USE.SORT">Classification</th>
+					<th ap-translate="INFO_USE.SORT01">Level 1</th>
+					<th ap-translate="INFO_USE.SORT02">Level 2</th>
+					<th ap-translate="INFO_USE.SORT03">Level 3<br/>(Only for Korean)</th>
+					<th ap-translate="INFO_USE.SORT04">Optional<br/>(KYC)</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td colspan="3" class="th_tit" ap-translate="INFO_USE.METHOD">Verification Method</td>
+					<td class="td_lev" ap-translate="INFO_USE.METHOD01">Email verification</td>
+					<td class="td_lev" ap-translate="INFO_USE.METHOD02">2fa verification</td>
+					<td class="td_lev" ap-translate="INFO_USE.METHOD03">Mobile Identity Verification<br/>Deposit/Withdrawal Account Verification</td>
+					<td class="td_lev" ap-translate="INFO_USE.METHOD04">Identity Confirmation</td>
+				</tr>
+				<tr>
+					<td rowspan="2" ap-translate="INFO_USE.DEPOSIT_LIMIT">Deposit Limit</td>
+					<td colspan="2">KRW</td>
+					<td ap-translate="INFO_USE.WON">0 Won</td>
+                    <td ap-translate="INFO_USE.WON">0 Won</td>
+					<td ap-translate="INFO_USE.DEPOSIT_UN">Unlimited</td>
+					<td ap-translate="INFO_USE.DEPOSIT_UN_KOR">Unlimited<br/>(Only for Korean)</td>
+				</tr>
+				<tr>
+					<td colspan="2" ap-translate="INFO_USE.CRYPTO">Cryptocurrency</td>
+					<td ap-translate="INFO_USE.DEPOSIT_UN">Unlimited</td>
+					<td ap-translate="INFO_USE.DEPOSIT_UN">Unlimited</td>
+					<td ap-translate="INFO_USE.DEPOSIT_UN">Unlimited</td>
+					<td ap-translate="INFO_USE.DEPOSIT_UN">Unlimited</td>
+				</tr>
+				<tr>
+					<td rowspan="3" ap-translate="INFO_USE.WITHDRAWAL_LIMIT">Withdrawal Limit</td>
+					<td rowspan="2">KRW</td>
+					<td ap-translate="INFO_USE.DAY">1 Day</td>
+					<td ap-translate="INFO_USE.WON">0 Won</td>
+					<td ap-translate="INFO_USE.WON">0 Won</td>
+					<td ap-translate="INFO_USE.FIVETHOUSAND">50,000,000 Won</td>
+					<td ap-translate="INFO_USE.FIVETHOUSAND_KOR">50,000,000 Won<br/>(Only for Korean)</td>
+				</tr>
+				<tr>
+					<td ap-translate="INFO_USE.MONTH">One month</td>
+					<td ap-translate="INFO_USE.WON">0 Won</td>
+					<td ap-translate="INFO_USE.WON">0 Won</td>
+					<td ap-translate="INFO_USE.THREEMILLION">300,000,000 Won</td>
+					<td ap-translate="INFO_USE.THREEMILLION_KOR">300,000,000 Won<br/>(Only for Korean)</td>
+				</tr>
+				<tr>
+					<td colspan="2" ap-translate="INFO_USE.CRYPTO">Cryptocurrency</td>
+					<td ap-translate="INFO_USE.WON">0 Won</td>
+					<td ap-translate="INFO_USE.DEPOSIT_UN">Unlimited</td>
+					<td ap-translate="INFO_USE.DEPOSIT_UN">Unlimited</td>
+					<td ap-translate="INFO_USE.DEPOSIT_UN">Unlimited</td>
+				</tr>
+			</tbody>
+		</table>
+		<ul>
+			<li ap-translate="INFO_USE.USE01">※ Daily withdrawal limit is initialized at 09:00 am KST</li>
+			<li ap-translate="INFO_USE.USE02">※ Daily withdrawal limit for cryptocurrency is applied when withdrawal amount for KRW is converted</li>
+			<li ap-translate="INFO_USE.USE03">※ Deposit/withdrawal for KRW and cryptocurrency may be limited if illegal trade or fraud is suspected</li>
+		</ul>
+	</div>
+</div>
+
+
+<script src="js/lib/growl.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.2/TweenMax.min.js"></script>
+<script type="text/babel" src="js/BBscript.js"></script>
+
+<!-- AlphaPoint -->
+<script src="js/config.js"></script>
+<script src="js/library.min.js"></script>
+<script src="js/widgets.min.js"></script>
+<script type="text/javascript">
+    AlphaPoint.config.templateStyle = 'retail';
+</script>
+
+<% include ./layout/footer %>
+
+</body>
+</html>
